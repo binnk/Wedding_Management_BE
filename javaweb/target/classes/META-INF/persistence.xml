@@ -3,5 +3,8 @@
     <persistence-unit name="persistence-data">
         <class>home.javaweb.entity.UserEntity</class>
          <class>home.javaweb.entity.RoleEntity</class>
+          <class>home.javaweb.entity.LobbyEntity</class>
+           <class>home.javaweb.entity.LobbyCategoryEntity</class>
+           <class>home.javaweb.entity.FeastEntity</class>
     </persistence-unit>
 </persistence>
