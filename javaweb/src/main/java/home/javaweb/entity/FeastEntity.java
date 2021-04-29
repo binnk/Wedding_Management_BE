@@ -22,7 +22,7 @@ public class FeastEntity {
 	private String bridename;
 	@Column(name = "phone")
 	private String phone;
-	@Column(name = "wedding_date", columnDefinition = "DATE DEFAULT CURRENT_DATE")
+	@Column(name = "wedding_date")
 	private Date wedding_date;
 	@Column(name = "id_shift")
 	private Long id_shift;

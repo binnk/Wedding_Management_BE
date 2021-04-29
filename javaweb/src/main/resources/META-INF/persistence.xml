@@ -5,6 +5,6 @@
          <class>home.javaweb.entity.RoleEntity</class>
           <class>home.javaweb.entity.LobbyEntity</class>
            <class>home.javaweb.entity.LobbyCategoryEntity</class>
-           <class>home.javaweb.entity.FeastEntity</class>
+          <class>home.javaweb.entity.FeastEntity</class>
     </persistence-unit>
 </persistence>
