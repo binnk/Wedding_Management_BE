@@ -19,8 +19,5 @@ public class FeastController {
 	public List<FeastEntity> weddingPage() {
 		return feastrepo.findAll();
 	}
-	@PostMapping("/api/create")
-	public FeastEntity createFeast (@RequestBody FeastEntity feast ) {
-		return feastrepo.save(feast);
-	}
+
 }
