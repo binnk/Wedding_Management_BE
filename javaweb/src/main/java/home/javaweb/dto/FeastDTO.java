@@ -3,30 +3,37 @@ import java.util.Date;
 
 public class FeastDTO {
 	
-	
-	private String bridename;
+	private Long id;
+	private String brideName;
 	private String phone;
-	private Date wedding_date;
-	private Long id_shift;
-	private  LobbyDTO lobby;
-	private Long number_of_tables;
-	private Long estimated_number_of_tables;
-	private float unitprice_table;
-	private float deposit;
+	private String weddingDate;
+	private Long idShift;
+	private String  lobbyName;
+	private Long lobbyId;
+	private Long numberOfTables;
+	private Long estimatedNumberOfTables;
+	private Float unitpriceTable;
+	private Float deposit;
 	private String note;
-	
-	private String groomname;
-	public String getGroomname() {
-		return groomname;
+	private String groomName;
+	public Long getLobbyId() {
+		return lobbyId;
 	}
-	public void setGroomname(String groomname) {
-		this.groomname = groomname;
+	public void setLobbyId(Long lobbyId) {
+		this.lobbyId = lobbyId;
 	}
-	public String getBridename() {
-		return bridename;
+	public FeastDTO() {}
+	public Long getId() {
+		return id;
 	}
-	public void setBridename(String bridename) {
-		this.bridename = bridename;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getBrideName() {
+		return brideName;
+	}
+	public void setBrideName(String brideName) {
+		this.brideName = brideName;
 	}
 	public String getPhone() {
 		return phone;
@@ -34,41 +41,41 @@ public class FeastDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getWedding_date() {
-		return wedding_date;
+	public String getWeddingDate() {
+		return weddingDate;
 	}
-	public void setWedding_date(Date wedding_date) {
-		this.wedding_date = wedding_date;
+	public void setWeddingDate(String weddingDate) {
+		this.weddingDate = weddingDate;
 	}
-	public Long getId_shift() {
-		return id_shift;
+	public Long getIdShift() {
+		return idShift;
 	}
-	public void setId_shift(Long id_shift) {
-		this.id_shift = id_shift;
+	public void setIdShift(Long idShift) {
+		this.idShift = idShift;
 	}
-	public LobbyDTO getLobby() {
-		return lobby;
+	public String getLobbyName() {
+		return lobbyName;
 	}
-	public void setLobby(LobbyDTO lobby) {
-		this.lobby = lobby;
+	public void setLobbyName(String lobbyName) {
+		this.lobbyName = lobbyName;
 	}
-	public Long getNumber_of_tables() {
-		return number_of_tables;
+	public Long getNumberOfTables() {
+		return numberOfTables;
 	}
-	public void setNumber_of_tables(Long number_of_tables) {
-		this.number_of_tables = number_of_tables;
+	public void setNumberOfTables(Long numberOfTables) {
+		this.numberOfTables = numberOfTables;
 	}
-	public Long getEstimated_number_of_tables() {
-		return estimated_number_of_tables;
+	public Long getEstimatedNumberOfTables() {
+		return estimatedNumberOfTables;
 	}
-	public void setEstimated_number_of_tables(Long estimated_number_of_tables) {
-		this.estimated_number_of_tables = estimated_number_of_tables;
+	public void setEstimatedNumberOfTables(Long estimatedNumberOfTables) {
+		this.estimatedNumberOfTables = estimatedNumberOfTables;
 	}
-	public float getUnitprice_table() {
-		return unitprice_table;
+	public float getUnitpriceTable() {
+		return unitpriceTable;
 	}
-	public void setUnitprice_table(float unitprice_table) {
-		this.unitprice_table = unitprice_table;
+	public void setUnitpriceTable(float unitpriceTable) {
+		this.unitpriceTable = unitpriceTable;
 	}
 	public float getDeposit() {
 		return deposit;
@@ -82,4 +89,27 @@ public class FeastDTO {
 	public void setNote(String note) {
 		this.note = note;
 	}
+	public String getGroomName() {
+		return groomName;
+	}
+	public void setGroomName(String groomName) {
+		this.groomName = groomName;
+	}
+	public boolean IsAnyNullOrEmty() {
+		
+		if(this.brideName == null || "".equals(brideName)) return true;
+		if(this.groomName == null || "".equals(groomName)) return true;
+		if(this.deposit < 0 || this.deposit == null) return true;
+		if(this.estimatedNumberOfTables == null || this.estimatedNumberOfTables < 1 ) return true;
+		if(this.numberOfTables == null || this.numberOfTables < 1) return true;
+		if(this.idShift == null ) return true;
+		if(this.note == null || "".equals(note)) return true;
+		if(this.phone == null || "".equals(phone)) return true;
+		if(this.unitpriceTable == null || "".equals(unitpriceTable)) return true;
+		if(this.weddingDate == null || "".equals(weddingDate)) return true;
+		if(this.lobbyId == null || this.lobbyId < 1) return true;
+		return false;
+	}
+	
+	
 }

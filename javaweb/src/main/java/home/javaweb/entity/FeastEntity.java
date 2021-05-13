@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 @Entity
 @Table(name = "feast")
@@ -18,11 +22,12 @@ public class FeastEntity {
 	private Long id;
 	@Column(name = "groomname")
 	private String groomname;
-	@Column(name = "bridemname")
+	@Column(name = "bridename")
 	private String bridename;
 	@Column(name = "phone")
 	private String phone;
 	@Column(name = "wedding_date")
+	@Temporal(TemporalType.DATE)
 	private Date wedding_date;
 	@Column(name = "id_shift")
 	private Long id_shift;
@@ -34,9 +39,9 @@ public class FeastEntity {
 	@Column(name = "estimated_number_of_tables")
 	private Long estimated_number_of_tables;
 	@Column(name = "unitprice_table")
-	private float unitprice_table;
+	private Float unitprice_table;
 	@Column(name = "deposit")
-	private float deposit;
+	private Float deposit;
 	@Column(name = "note")
 	private String note;
 	public Long getId() {

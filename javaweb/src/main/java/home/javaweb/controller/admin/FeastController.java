@@ -1,4 +1,5 @@
 package home.javaweb.controller.admin;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.javaweb.converter.FeastConverter;
+import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.repository.FeastRepository;
 
@@ -18,8 +21,14 @@ public class FeastController {
   private FeastRepository  feastrepo;
   
 	@GetMapping("/quan-tri/wedding")
-	public List<FeastEntity> weddingPage() {
-		return feastrepo.findAll();
+	public List<FeastDTO> weddingPage() {
+		List<FeastDTO> listDTO = new LinkedList<FeastDTO>();
+		List<FeastEntity>  listsEntity =  feastrepo.findAll();
+		for (FeastEntity item : listsEntity) {
+			listDTO.add(FeastConverter.getIntance().EntityToDto(item));
+		}
+		return listDTO;
+		
 	}
 //	@PostMapping("/api/create")
 //	public FeastEntity createFeast (@RequestBody FeastEntity feast ) {
