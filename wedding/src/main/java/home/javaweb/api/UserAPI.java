@@ -15,6 +15,7 @@ import home.javaweb.service.IUserService;
 
 
 @RestController
+@RequestMapping("/api")
 public class UserAPI {
 	
 	@Autowired
