@@ -26,7 +26,6 @@ public class UserService implements IUserService {
 	public List<UserDTO> findAll() {
 		List<UserDTO> result = new ArrayList<UserDTO>();
 		List<UserEntity> userEntities = userRepository.findAll();
-		System.out.println("cccc á");
 		for(UserEntity entity : userEntities) {
 			System.out.println(entity.getFullname());
 			UserDTO userDTO = userConverter.toDto(entity);
