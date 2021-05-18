@@ -9,8 +9,8 @@ public class FoodDTO {
 	private String		 	img;
 	private Long 			price;
 	private FoodCategory 	category;
-	private Long 			categoryId;
 	private String 			moreInfo;
+
 
 	public Long getId() {
 		return id;
@@ -52,21 +52,12 @@ public class FoodDTO {
 		this.category = foodCategory;
 	}
 	
-	
 	public String getMoreInfo() {
 		return moreInfo;
 	}
-
 
 	public void setMoreInfo(String moreInfo) {
 		this.moreInfo = moreInfo;
 	}
 	
-	public Long getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
 }

@@ -32,27 +32,5 @@ public class FoodService implements IFoodService {
 		}
 		return result;
 	}
-
-	@Override
-	public FoodDTO save(FoodDTO dto) {
-		
-		Food food = foodConverter.toEntity(dto);
-		foodRepo.save(food);
-		
-		return foodConverter.toDTO(food);
-	}
-
-	@Override
-	public FoodDTO findById(Long id) {
-		Food food = foodRepo.findById(id).get();	
-		return foodConverter.toDTO(food);
-	}
-
-	@Override
-	public void deleteById(Long[] ids) {
-		// TODO Auto-generated method stub
-		for(Long id : ids)
-			foodRepo.deleteById(id);
-	}
 	
 }
