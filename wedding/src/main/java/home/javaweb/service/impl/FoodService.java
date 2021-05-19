@@ -39,7 +39,9 @@ public class FoodService implements IFoodService {
 		Food food = foodConverter.toEntity(dto);
 		foodRepo.save(food);
 		
-		return foodConverter.toDTO(food);
+		FoodDTO result = foodConverter.toDTO(food);
+		
+		return result;
 	}
 
 	@Override
