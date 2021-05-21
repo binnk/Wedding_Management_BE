@@ -1,10 +1,14 @@
 package home.javaweb.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +27,9 @@ public class Service {
 	
 	@Column(name = "unit_price")
 	private Long price;
+	
+	@OneToMany(mappedBy = "service")
+	private List<FeastService> services = new ArrayList<FeastService>();
 
 	public Long getId() {
 		return id;
@@ -54,6 +61,14 @@ public class Service {
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+
+	public List<FeastService> getServices() {
+		return services;
+	}
+
+	public void setServices(List<FeastService> services) {
+		this.services = services;
 	}
 	
 	
