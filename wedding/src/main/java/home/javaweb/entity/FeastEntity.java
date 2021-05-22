@@ -31,22 +31,20 @@ public class FeastEntity {
 	@Column(name = "wedding_date")
 	@Temporal(TemporalType.DATE)
 	private Date wedding_date;
+	@Column(name = "number_of_tables")
+	private Long number_of_tables;
+	@Column(name = "deposit")
+	private Float deposit;
+	@Column(name = "note")
+	private String note;
+
 	@ManyToOne
 	@JoinColumn(name = "shift_id")
 	private ShiftEntity shift;
 	@ManyToOne
 	@JoinColumn(name = "lobby_id")
 	private  LobbyEntity lobby;
-	@Column(name = "number_of_tables")
-	private Long number_of_tables;
-	@Column(name = "estimated_number_of_tables")
-	private Long estimated_number_of_tables;
-	@Column(name = "unitprice_table")
-	private Float unitprice_table;
-	@Column(name = "deposit")
-	private Float deposit;
-	@Column(name = "note")
-	private String note;
+
 	
 	@OneToMany(mappedBy = "feast")
 	private List<FeastService> feastServices = new ArrayList<FeastService>();
@@ -101,18 +99,6 @@ public class FeastEntity {
 	}
 	public void setNumber_of_table(Long number_of_table) {
 		this.number_of_tables = number_of_table;
-	}
-	public Long getEstimated_number_of_tables() {
-		return estimated_number_of_tables;
-	}
-	public void setEstimated_number_of_tables(Long estimated_number_of_tables) {
-		this.estimated_number_of_tables = estimated_number_of_tables;
-	}
-	public float getUnitprice_table() {
-		return unitprice_table;
-	}
-	public void setUnitprice_table(float unitprice_table) {
-		this.unitprice_table = unitprice_table;
 	}
 	public float getDeposit() {
 		return deposit;
