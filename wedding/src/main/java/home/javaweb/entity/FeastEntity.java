@@ -51,6 +51,9 @@ public class FeastEntity {
 	@OneToMany(mappedBy = "feast")
 	private List<FeastService> feastServices = new ArrayList<FeastService>();
 	
+	@OneToMany(mappedBy = "feast")
+	private List<FeastTable> feastTables = new ArrayList<FeastTable	>();
+	
 	public Long getId() {
 		return id;
 	}

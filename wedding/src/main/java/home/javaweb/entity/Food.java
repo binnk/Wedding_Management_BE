@@ -1,5 +1,8 @@
 package home.javaweb.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +34,11 @@ public class Food {
 	private String moreInfo;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_food_category")
+	@JoinColumn(name = "food_category_id")
 	private FoodCategory foodCategory;
+	
+	@OneToMany(mappedBy = "food")
+	private List<TableFood> feastTables = new ArrayList<TableFood>();
 	
 	
 
@@ -82,6 +89,16 @@ public class Food {
 	public void setMoreInfo(String moreInfo) {
 		this.moreInfo = moreInfo;
 	}
+
+	public List<TableFood> getFeastTables() {
+		return feastTables;
+	}
+
+	public void setFeastTables(List<TableFood> feastTables) {
+		this.feastTables = feastTables;
+	}
+
+
 	
 	
 	

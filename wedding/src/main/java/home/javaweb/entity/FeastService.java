@@ -22,7 +22,7 @@ public class FeastService {
 	private Service service;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("feastID")
+	@MapsId("feastId")
 	private FeastEntity feast;
 	
 	@Column(name = "count")
