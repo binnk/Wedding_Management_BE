@@ -16,6 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "feast")
 public class FeastEntity {
@@ -47,6 +50,7 @@ public class FeastEntity {
 
 	
 	@OneToMany(mappedBy = "feast")
+	@JsonIgnore
 	private List<FeastService> feastServices = new ArrayList<FeastService>();
 	
 	@OneToMany(mappedBy = "feast")

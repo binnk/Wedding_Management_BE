@@ -8,6 +8,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class FeastServiceId implements Serializable {
 	
+
 	@Column(name = "feast_id")
 	private Long feastId;
 	

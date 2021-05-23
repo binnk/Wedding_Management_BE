@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "food_category")
 public class FoodCategory {
@@ -26,6 +28,7 @@ public class FoodCategory {
 	private String moreInfo;
 	
 	@OneToMany(mappedBy = "foodCategory")
+	@JsonIgnore
 	private List<Food> foods = new ArrayList<Food>();
 
 	public Long getId() {
@@ -51,4 +54,14 @@ public class FoodCategory {
 	public void setMoreInfo(String moreInfo) {
 		this.moreInfo = moreInfo;
 	}
+
+	public List<Food> getFoods() {
+		return foods;
+	}
+
+	public void setFoods(List<Food> foods) {
+		this.foods = foods;
+	}
+	
+	
 }

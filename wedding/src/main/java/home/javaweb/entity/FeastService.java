@@ -15,13 +15,13 @@ import home.javaweb.embeddable.FeastServiceId;
 public class FeastService {
 	
 	@EmbeddedId
-	private FeastServiceId id;
+	private FeastServiceId id ;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@MapsId("serviceId")
 	private Service service;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@MapsId("feastId")
 	private FeastEntity feast;
 	

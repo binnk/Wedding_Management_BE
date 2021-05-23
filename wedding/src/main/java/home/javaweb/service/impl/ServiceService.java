@@ -50,4 +50,9 @@ public class ServiceService implements IServiceService {
 			_repo.deleteById(id);		
 	}
 
+	@Override
+	public ServiceDTO findById(Long id) {
+		return _converter.toDTO(_repo.findById(id).get());
+	}
+
 }

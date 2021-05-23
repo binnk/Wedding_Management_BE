@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "service")
 public class Service {
@@ -29,6 +32,7 @@ public class Service {
 	private Long price;
 	
 	@OneToMany(mappedBy = "service")
+	@JsonIgnore
 	private List<FeastService> services = new ArrayList<FeastService>();
 
 	public Long getId() {
