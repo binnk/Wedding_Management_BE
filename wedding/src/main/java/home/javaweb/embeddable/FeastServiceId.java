@@ -28,6 +28,32 @@ public class FeastServiceId implements Serializable {
 		this.feastId = feastId;
 		this.serviceId = serviceId;
 	}
+
+
+
+	public Long getFeastId() {
+		return feastId;
+	}
+
+
+
+	public void setFeastId(Long feastId) {
+		this.feastId = feastId;
+	}
+
+
+
+	public Long getServiceId() {
+		return serviceId;
+	}
+
+
+
+	public void setServiceId(Long serviceId) {
+		this.serviceId = serviceId;
+	}
+	
+	
 	
 	
 }

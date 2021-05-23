@@ -87,4 +87,10 @@ public class FeastService implements IFeastService {
 		// TODO Auto-generated method stub
 		feastRepo.deleteById(id);
 	}
+
+	@Override
+	public FeastEntity findById(Long id) {
+		FeastEntity result = feastRepo.findById(id).get();
+		return result;
+	}
 }

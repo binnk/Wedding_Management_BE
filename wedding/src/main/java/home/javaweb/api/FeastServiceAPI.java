@@ -53,7 +53,7 @@ public class FeastServiceAPI {
 	}
 	
 	@PostMapping("/feast/service")
-	public Object addService(@RequestBody FeastServiceDTO dto) {
+	public FeastService addService(@RequestBody FeastServiceDTO dto) {
 		return _service.save(dto);
 	}
 

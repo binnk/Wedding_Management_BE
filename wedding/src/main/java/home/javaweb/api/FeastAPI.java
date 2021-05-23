@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import home.javaweb.dto.FeastDTO;
+import home.javaweb.entity.FeastEntity;
 import home.javaweb.service.IFeastService;
 
 @RequestMapping("/api")
@@ -26,6 +27,8 @@ public class FeastAPI {
 	public List<FeastDTO> weddingPage() {
 		return feastser.findAll();		
 	}
+  
+
 	@PostMapping("/feast")
 	public ResponseEntity<FeastDTO> createFeast (@RequestBody FeastDTO feast ) throws Exception {
 		FeastDTO result = null;

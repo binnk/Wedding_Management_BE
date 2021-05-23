@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import home.javaweb.dto.FeastServiceDTO;
+import home.javaweb.embeddable.FeastServiceId;
 import home.javaweb.entity.FeastService;
 import home.javaweb.entity.Service;
 
-public interface FeastServiceRepository extends JpaRepository<FeastService, Long> {
+public interface FeastServiceRepository extends JpaRepository<FeastService, FeastServiceId> {
 //	@Query(value = "Select s.id, s.image, s.name, s.unit_price "
 //			+ "FROM feast_service fs INNER JOIN service s ON fs.service_id = s.id "
 //			+ "WHERE fs.feast_id = :feastId", nativeQuery = true)
