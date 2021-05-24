@@ -19,7 +19,6 @@ public class FeastConverter {
     		 result.setId(entity.getId());
     		 result.setBrideName(entity.getBridename());
     		 result.setGroomName(entity.getGroomname());
-    		 result.setEstimatedNumberOfTables(entity.getEstimated_number_of_tables());
     		 result.setDeposit(entity.getDeposit());
     		 result.setIdShift(entity.getshift().getId());
     		 result.setNameShift(entity.getshift().getName());
@@ -31,7 +30,6 @@ public class FeastConverter {
     		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
     		 String strDate = formatter.format(entity.getWedding_date());  
     		 result.setWeddingDate(strDate);
-    		 result.setUnitpriceTable(entity.getUnitprice_table());
     	 }
     	 return result;
     }
@@ -41,14 +39,10 @@ public class FeastConverter {
     	result.setGroomname(dto.getGroomName());
     	result.setBridename(dto.getBrideName());
     	result.setDeposit(dto.getDeposit());
-    	result.setUnitprice_table(dto.getUnitpriceTable());
-    	result.setEstimated_number_of_tables(dto.getEstimatedNumberOfTables());  
     	result.setNumber_of_table(dto.getNumberOfTables());
     	result.setPhone(dto.getPhone());
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
     	Date  date = formatter.parse(dto.getWeddingDate());
-    	System.out.println(dto.getWeddingDate());
-        System.out.println(date.toString());
     	result.setWedding_date(date);
     	result.setNote(dto.getNote());
     	
