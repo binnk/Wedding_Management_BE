@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,6 +55,11 @@ public class FeastServiceAPI {
 	
 	@PostMapping("/feast/service")
 	public FeastService addService(@RequestBody FeastServiceDTO dto) {
+		return _service.save(dto);
+	}
+	
+	@PutMapping("/feast/service")
+	public FeastService updateService(@RequestBody FeastServiceDTO dto) {
 		return _service.save(dto);
 	}
 
