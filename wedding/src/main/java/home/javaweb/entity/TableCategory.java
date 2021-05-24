@@ -11,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-@Table(name = "food_category")
-public class FoodCategory {
+@Table(name = "table_category")
+public class TableCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +22,8 @@ public class FoodCategory {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "more_info")
-	private String moreInfo;
-	
-	@OneToMany(mappedBy = "foodCategory")
-	@JsonIgnore
-	private List<Food> foods = new ArrayList<Food>();
+	@OneToMany(mappedBy = "tableCategory")
+	private List<FeastTable> feastTables = new ArrayList<FeastTable>();
 
 	public Long getId() {
 		return id;
@@ -47,21 +41,14 @@ public class FoodCategory {
 		this.name = name;
 	}
 
-	public String getMoreInfo() {
-		return moreInfo;
+	public List<FeastTable> getFeastTables() {
+		return feastTables;
 	}
 
-	public void setMoreInfo(String moreInfo) {
-		this.moreInfo = moreInfo;
+	public void setFeastTables(List<FeastTable> feastTables) {
+		this.feastTables = feastTables;
 	}
-
-	public List<Food> getFoods() {
-		return foods;
-	}
-
-	public void setFoods(List<Food> foods) {
-		this.foods = foods;
-	}
+	
 	
 	
 }

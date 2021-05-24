@@ -12,20 +12,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import home.javaweb.dto.FeastDTO;
+import home.javaweb.entity.FeastEntity;
 import home.javaweb.service.IFeastService;
 
 @CrossOrigin
 @RestController
+@RequestMapping("/api")
 public class FeastAPI {
   @Autowired
   private IFeastService  feastser;
   //some thing change
   @GetMapping(path = "/feast")
 	public List<FeastDTO> weddingPage() {
-		return feastser.findAll();		
+		return feastser.findAll();
 	}
+
+
 	@PostMapping("/feast")
 	public ResponseEntity<FeastDTO> createFeast (@RequestBody FeastDTO feast ) throws Exception {
 		FeastDTO result = null;
@@ -48,5 +53,5 @@ public class FeastAPI {
 	public void deleteFeast (@PathVariable("id") Long id ) {
 		 feastser.delete(id);
 	}
-	
+
 }
