@@ -51,20 +51,24 @@ public class FeastServiceService implements IFeastServiceService{
 		Long feastId = dto.getFeastId();
 		Long serviceId = dto.getServiceId();
 		int	count = dto.getCount();
+		String note = dto.getNote();
+		Long totalPrice = dto.getTotalPrice();
 	
 		
 		FeastEntity feast = _feastService.findById(feastId);
 		home.javaweb.entity.Service service = _serviceRepo.findById(serviceId).get();
 		
-
-		record.setCount(dto.getCount());
 		FeastServiceId fsId = new FeastServiceId();
 		fsId.setFeastId(feastId);
 		fsId.setServiceId(serviceId);
 		
+		record.setId(fsId);		
 		record.setFeast(feast);
 		record.setService(service);
-		record.setId(fsId);
+		
+		record.setCount(dto.getCount());
+		record.setTotalPrice(dto.getTotalPrice());
+		record.setNote(dto.getNote());
 		
 		//_repository.save(record);
 		
@@ -74,6 +78,14 @@ public class FeastServiceService implements IFeastServiceService{
 	@Override
 	public FeastService findByFeastIdAndServiceId(Long feastId, Long serviceId) {
 		return _repository.findByFeastIdAndServiceId(feastId, serviceId);
+	}
+
+	@Override
+	public void deleteById(Long feastId, Long serviceId) {
+		
+		FeastServiceId id = new FeastServiceId(feastId, serviceId);	
+		_repository.deleteById(id);
+		
 	}
 
 }

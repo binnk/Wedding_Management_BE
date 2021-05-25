@@ -1,18 +1,19 @@
-package home.javaweb.entity;
+package home.javaweb.dto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.Table;
 
 import home.javaweb.embeddable.TableFoodId;
+import home.javaweb.entity.FeastTable;
+import home.javaweb.entity.Food;
 
-@Entity
-@Table(name = "table_food")
-public class TableFood {
-	
+public class TableFoodDTO {
+	List<FoodSupport> foodSupports = new ArrayList<FoodSupport>();
 	@EmbeddedId
 	private TableFoodId id;
 	
@@ -81,7 +82,4 @@ public class TableFood {
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
-	
-	
 }

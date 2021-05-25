@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import home.javaweb.dto.FeastServiceDTO;
-import home.javaweb.dto.ServiceCountDTO;
+import home.javaweb.dto.ServiceSupport;
 import home.javaweb.dto.ServiceDTO;
 import home.javaweb.entity.FeastService;
 import home.javaweb.service.IServiceService;
@@ -26,11 +26,13 @@ public class FeastServiceConverter {
 		result.setFeast(entities.get(0).getFeast());
 
 		for (FeastService fs : entities) {
-			ServiceCountDTO serviceCount = new ServiceCountDTO();
+			ServiceSupport serviceSupport = new ServiceSupport();
 
-			serviceCount.setService(fs.getService());
-			serviceCount.setCount(fs.getCount());
-			result.getServices().add(serviceCount);
+			serviceSupport.setService(fs.getService());
+			serviceSupport.setCount(fs.getCount());
+			serviceSupport.setTotalPrice(fs.getTotalPrice());
+			serviceSupport.setNote(fs.getNote());
+			result.getServices().add(serviceSupport);
 		}
 
 		return result;
@@ -46,6 +48,8 @@ public class FeastServiceConverter {
 		result.setService(_serviceConverter.toEntity(service));
 
 		result.setCount(dto.getCount());
+		result.setTotalPrice(dto.getTotalPrice());
+		result.setNote(dto.getNote());
 
 		return result;
 	}

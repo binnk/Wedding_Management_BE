@@ -31,6 +31,9 @@ public class Service {
 	@Column(name = "unit_price")
 	private Long price;
 	
+	@Column(name = "more_info")
+	private String moreInfo;
+	
 	@OneToMany(mappedBy = "service")
 	@JsonIgnore
 	private List<FeastService> services = new ArrayList<FeastService>();
@@ -65,6 +68,16 @@ public class Service {
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+	
+	
+
+	public String getMoreInfo() {
+		return moreInfo;
+	}
+
+	public void setMoreInfo(String moreInfo) {
+		this.moreInfo = moreInfo;
 	}
 
 	public List<FeastService> getServices() {

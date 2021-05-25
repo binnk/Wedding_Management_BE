@@ -32,6 +32,7 @@ public class Food {
 	
 	@Column(name = "more_info")
 	private String moreInfo;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "food_category_id")
@@ -73,6 +74,8 @@ public class Food {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
+
+
 
 	public FoodCategory getFoodCategory() {
 		return foodCategory;

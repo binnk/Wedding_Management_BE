@@ -41,8 +41,9 @@ public class FeastTable {
 	@Column(name = "unit_price_table")
 	private Long unitPriceTable;
 	
-	@Column(name = "deposit")
-	private Long deposit;
+	@Column(name = "note")
+	private String note;
+	
 	
 	
 
@@ -103,14 +104,13 @@ public class FeastTable {
 		this.unitPriceTable = unitPriceTable;
 	}
 
-	public Long getDeposit() {
-		return deposit;
+	public String getNote() {
+		return note;
 	}
 
-	public void setDeposit(Long deposit) {
-		this.deposit = deposit;
+	public void setNote(String note) {
+		this.note = note;
 	}
-	
 	
 	
 	
