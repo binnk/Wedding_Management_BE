@@ -23,51 +23,51 @@ import home.javaweb.service.IFoodService;
 @RestController
 @RequestMapping("/api")
 public class FoodAPI {
-	
+
 	@Autowired
 	private IFoodService foodService;
-	
+
 	@Autowired
 	private IFoodCategoryService categoryService;
-	
+
 	@GetMapping("/food")
 	public List<FoodDTO> getListFood() {
 		return foodService.findAll();
 	}
-	
+
 	@PostMapping("/food")
 	public FoodDTO createFood(
 				@RequestBody FoodDTO dto
 	) {
-		
-		dto.setCategory(categoryService.get(dto.getCategoryId()));	
-		return foodService.save(dto);	
+
+		dto.setCategory(categoryService.get(dto.getCategoryId()));
+		return foodService.save(dto);
 	}
-	
+
 	@PutMapping("/food")
 	public FoodDTO updateFood(
 				@RequestBody FoodDTO dto
 			//	@PathVariable(value = "id") Long id
 	) {
-		
-		
-		dto.setCategory(categoryService.get(dto.getCategoryId()));	
-		return foodService.save(dto);	
+
+
+		dto.setCategory(categoryService.get(dto.getCategoryId()));
+		return foodService.save(dto);
 	}
-	
+
 	@DeleteMapping("/food")
 	public ResponseEntity<?> deleteFoods (
 			@RequestBody Long[] ids
 	) {
 		try {
 			foodService.deleteById(ids);
-			
+
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
-		catch (NoSuchElementException e) { 
+		catch (NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	
+
+
 }
