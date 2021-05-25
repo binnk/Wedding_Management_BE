@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "feast_table")
 public class FeastTable {
@@ -21,16 +23,18 @@ public class FeastTable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "feastTable")
-	private List<TableFood> foods = new ArrayList<TableFood>(); 
+	@ManyToOne
+	@JoinColumn(name = "feast_id")
+	private FeastEntity feast;
 	
 	@ManyToOne
 	@JoinColumn(name = "table_category_id")
 	private TableCategory tableCategory;
 	
-	@ManyToOne
-	@JoinColumn(name = "feast_id")
-	private FeastEntity feast;
+	@OneToMany(mappedBy = "feastTable")
+	@JsonIgnore
+	private List<TableFood> foods = new ArrayList<TableFood>(); 
+	
 	
 	@Column(name= "number_tables")
 	private int numberTables;
@@ -41,8 +45,9 @@ public class FeastTable {
 	@Column(name = "unit_price_table")
 	private Long unitPriceTable;
 	
-	@Column(name = "deposit")
-	private Long deposit;
+	@Column(name = "note")
+	private String note;
+	
 	
 	
 
@@ -103,14 +108,13 @@ public class FeastTable {
 		this.unitPriceTable = unitPriceTable;
 	}
 
-	public Long getDeposit() {
-		return deposit;
+	public String getNote() {
+		return note;
 	}
 
-	public void setDeposit(Long deposit) {
-		this.deposit = deposit;
+	public void setNote(String note) {
+		this.note = note;
 	}
-	
 	
 	
 	

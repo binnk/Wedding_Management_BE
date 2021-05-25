@@ -11,6 +11,7 @@ import home.javaweb.service.IShiftService;
 @CrossOrigin
 @RequestMapping("/api")
 @RestController
+@CrossOrigin
 public class ShiftAPI {
   @Autowired
   private IShiftService shiftser;

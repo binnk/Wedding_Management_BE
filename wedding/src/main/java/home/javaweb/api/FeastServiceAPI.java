@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import home.javaweb.dto.FeastServiceDTO;
-import home.javaweb.dto.ServiceCountDTO;
+import home.javaweb.dto.ServiceSupport;
 import home.javaweb.entity.FeastService;
 import home.javaweb.entity.Service;
 import home.javaweb.repository.FeastServiceRepository;
@@ -28,8 +29,6 @@ public class FeastServiceAPI {
 	@Autowired
 	private IFeastServiceService _service;
 	
-	@Autowired
-	private FeastServiceRepository _repo;
 
 //	@GetMapping("/feast-service")
 //	public List<FeastService> get() {
@@ -54,7 +53,7 @@ public class FeastServiceAPI {
 			@PathVariable(value = "serviceid") Long serviceId
 	) {
 
-		return _repo.findByFeastIdAndServiceId(feastId,serviceId);
+		return _service.findByFeastIdAndServiceId(feastId,serviceId);
 	}
 	
 	@PostMapping("/feast/service")
@@ -65,6 +64,14 @@ public class FeastServiceAPI {
 	@PutMapping("/feast/service")
 	public FeastService updateService(@RequestBody FeastServiceDTO dto) {
 		return _service.save(dto);
+	}
+	
+	@DeleteMapping("/feast/{feastid}/service/{serviceid}")
+	public void deleteFeastService(
+			@PathVariable(value = "feastid") Long feastId,
+			@PathVariable(value = "serviceid") Long serviceId
+	) {
+		_service.deleteById(feastId, serviceId);
 	}
 
 }

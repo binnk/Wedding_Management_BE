@@ -16,6 +16,7 @@ public class TableFood {
 	@EmbeddedId
 	private TableFoodId id;
 	
+	
 	@ManyToOne
 	@MapsId("feastTableId")
 	private FeastTable feastTable;
@@ -23,6 +24,12 @@ public class TableFood {
 	@ManyToOne
 	@MapsId("foodId")
 	private Food food;
+	
+	@Column(name="total_price")
+	private Long totalPrice;
+	
+	@Column(name="note")
+	private String note;
 	
 	@Column(name = "count")
 	private int count;
@@ -58,6 +65,23 @@ public class TableFood {
 	public void setCount(int count) {
 		this.count = count;
 	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+	
 	
 	
 }

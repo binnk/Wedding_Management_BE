@@ -6,16 +6,14 @@ import java.util.List;
 import home.javaweb.entity.FeastEntity;
 
 public class FeastServiceDTO {
-
-	private List<ServiceCountDTO> services = new ArrayList<ServiceCountDTO>();
 	
 	private FeastEntity feast;
-	
-	private Long feastId;
-	
-	private Long serviceId;
-	
-	private int count;
+	private List<ServiceSupport> services = new ArrayList<ServiceSupport>();
+	private Long feastId;	
+	private Long serviceId;	
+	private int count;	
+	private Long totalPrice;	
+	private String note;
 	
 	
 
@@ -44,11 +42,11 @@ public class FeastServiceDTO {
 		this.serviceId = serviceId;
 	}
 
-	public List<ServiceCountDTO> getServices() {
+	public List<ServiceSupport> getServices() {
 		return services;
 	}
 
-	public void setServices(List<ServiceCountDTO> services) {
+	public void setServices(List<ServiceSupport> services) {
 		this.services = services;
 	}
 
@@ -58,6 +56,22 @@ public class FeastServiceDTO {
 
 	public void setFeast(FeastEntity feast) {
 		this.feast = feast;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 	
 	

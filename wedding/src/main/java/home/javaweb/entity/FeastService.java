@@ -18,15 +18,22 @@ public class FeastService {
 	private FeastServiceId id ;
 	
 	@ManyToOne
-	@MapsId("serviceId")
-	private Service service;
-	
-	@ManyToOne
 	@MapsId("feastId")
 	private FeastEntity feast;
 	
+	@ManyToOne
+	@MapsId("serviceId")
+	private Service service;
+	
+	
 	@Column(name = "count")
 	private int count;
+	
+	@Column(name = "note")
+	private String note;
+	
+	@Column(name = "total_price")
+	private Long totalPrice;
 
 	public FeastServiceId getId() {
 		return id;
@@ -59,6 +66,24 @@ public class FeastService {
 	public void setCount(int count) {
 		this.count = count;
 	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
+	
 	
 	
 }

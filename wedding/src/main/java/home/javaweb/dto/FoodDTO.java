@@ -11,6 +11,7 @@ public class FoodDTO {
 	private FoodCategory 	category;
 	private Long 			categoryId;
 	private String 			moreInfo;
+	private String 			note;
 
 	public Long getId() {
 		return id;
@@ -69,4 +70,13 @@ public class FoodDTO {
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+	
 }
