@@ -18,12 +18,13 @@ public class FeastService {
 	private FeastServiceId id ;
 	
 	@ManyToOne
+	@MapsId("feastId")
+	private FeastEntity feast;
+	
+	@ManyToOne
 	@MapsId("serviceId")
 	private Service service;
 	
-	@ManyToOne
-	@MapsId("feastId")
-	private FeastEntity feast;
 	
 	@Column(name = "count")
 	private int count;

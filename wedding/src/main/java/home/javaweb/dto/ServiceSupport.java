@@ -3,12 +3,9 @@ package home.javaweb.dto;
 import home.javaweb.entity.Service;
 
 public class ServiceSupport {
-	private Service service;
-	
-	private int count;
-	
-	private Long totalPrice;
-	
+	private Service service;	
+	private int count;	
+	private Long totalPrice;	
 	private String note;
 	
 

@@ -46,31 +46,7 @@ public class FeastServiceService implements IFeastServiceService{
 	public FeastService save(FeastServiceDTO dto) {
 		FeastService result = new FeastService();
 		
-		FeastService record = new FeastService();
-		
-		Long feastId = dto.getFeastId();
-		Long serviceId = dto.getServiceId();
-		int	count = dto.getCount();
-		String note = dto.getNote();
-		Long totalPrice = dto.getTotalPrice();
-	
-		
-		FeastEntity feast = _feastService.findById(feastId);
-		home.javaweb.entity.Service service = _serviceRepo.findById(serviceId).get();
-		
-		FeastServiceId fsId = new FeastServiceId();
-		fsId.setFeastId(feastId);
-		fsId.setServiceId(serviceId);
-		
-		record.setId(fsId);		
-		record.setFeast(feast);
-		record.setService(service);
-		
-		record.setCount(dto.getCount());
-		record.setTotalPrice(dto.getTotalPrice());
-		record.setNote(dto.getNote());
-		
-		//_repository.save(record);
+		FeastService record = _converter.toEntity(dto);
 		
 		return 	_repository.save(record);
 	}

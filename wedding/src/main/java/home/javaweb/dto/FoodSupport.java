@@ -7,6 +7,8 @@ public class FoodSupport {
 	private int count;
 	private Long totalPrice;
 	private String note;
+	
+	
 	public Food getFood() {
 		return food;
 	}

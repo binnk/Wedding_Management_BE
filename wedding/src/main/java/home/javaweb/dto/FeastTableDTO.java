@@ -30,9 +30,6 @@ public class FeastTableDTO {
 		this.id = id;
 	}
 
-
-
-
 	public FeastEntity getFeast() {
 		return feast;
 	}

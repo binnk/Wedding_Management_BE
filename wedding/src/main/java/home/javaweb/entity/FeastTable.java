@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "feast_table")
 public class FeastTable {
@@ -21,16 +23,18 @@ public class FeastTable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "feastTable")
-	private List<TableFood> foods = new ArrayList<TableFood>(); 
+	@ManyToOne
+	@JoinColumn(name = "feast_id")
+	private FeastEntity feast;
 	
 	@ManyToOne
 	@JoinColumn(name = "table_category_id")
 	private TableCategory tableCategory;
 	
-	@ManyToOne
-	@JoinColumn(name = "feast_id")
-	private FeastEntity feast;
+	@OneToMany(mappedBy = "feastTable")
+	@JsonIgnore
+	private List<TableFood> foods = new ArrayList<TableFood>(); 
+	
 	
 	@Column(name= "number_tables")
 	private int numberTables;

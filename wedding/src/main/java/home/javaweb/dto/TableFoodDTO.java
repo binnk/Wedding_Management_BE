@@ -13,73 +13,64 @@ import home.javaweb.entity.FeastTable;
 import home.javaweb.entity.Food;
 
 public class TableFoodDTO {
-	List<FoodSupport> foodSupports = new ArrayList<FoodSupport>();
-	@EmbeddedId
-	private TableFoodId id;
 	
+	//Response
+	private FeastTable feastTable;	
+	List<FoodSupport> foods = new ArrayList<FoodSupport>();
 	
-	@ManyToOne
-	@MapsId("feastTableId")
-	private FeastTable feastTable;
-	
-	@ManyToOne
-	@MapsId("foodId")
-	private Food food;
-	
-	@Column(name="total_price")
-	private Long totalPrice;
-	
-	@Column(name="note")
+	//Request	
+	private Long feastTableId;	
+	private Long foodId;	
+	private Long totalPrice;	
 	private String note;
-	
-	@Column(name = "count")
 	private int count;
-
-	public TableFoodId getId() {
-		return id;
+	
+	
+	
+	public List<FoodSupport> getFoods() {
+		return foods;
 	}
-
-	public void setId(TableFoodId id) {
-		this.id = id;
+	public void setFoods(List<FoodSupport> foods) {
+		this.foods = foods;
 	}
-
 	public FeastTable getFeastTable() {
 		return feastTable;
 	}
-
 	public void setFeastTable(FeastTable feastTable) {
 		this.feastTable = feastTable;
 	}
-
-	public Food getFood() {
-		return food;
+	public Long getFeastTableId() {
+		return feastTableId;
 	}
-
-	public void setFood(Food food) {
-		this.food = food;
+	public void setFeastTableId(Long feastTableId) {
+		this.feastTableId = feastTableId;
 	}
-
+	public Long getFoodId() {
+		return foodId;
+	}
+	public void setFoodId(Long foodId) {
+		this.foodId = foodId;
+	}
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public int getCount() {
 		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
 	}
 
-	public Long getTotalPrice() {
-		return totalPrice;
-	}
 
-	public void setTotalPrice(Long totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
+	
+	
 }

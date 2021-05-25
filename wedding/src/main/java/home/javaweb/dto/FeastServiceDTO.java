@@ -6,19 +6,13 @@ import java.util.List;
 import home.javaweb.entity.FeastEntity;
 
 public class FeastServiceDTO {
-
-	private List<ServiceSupport> services = new ArrayList<ServiceSupport>();
 	
 	private FeastEntity feast;
-	
-	private Long feastId;
-	
-	private Long serviceId;
-	
-	private int count;
-	
-	private Long totalPrice;
-	
+	private List<ServiceSupport> services = new ArrayList<ServiceSupport>();
+	private Long feastId;	
+	private Long serviceId;	
+	private int count;	
+	private Long totalPrice;	
 	private String note;
 	
 	

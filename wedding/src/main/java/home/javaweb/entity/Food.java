@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "food")
 public class Food {
@@ -39,6 +41,7 @@ public class Food {
 	private FoodCategory foodCategory;
 	
 	@OneToMany(mappedBy = "food")
+	@JsonIgnore
 	private List<TableFood> feastTables = new ArrayList<TableFood>();
 	
 	

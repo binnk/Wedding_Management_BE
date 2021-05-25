@@ -56,4 +56,11 @@ public class FeastTableService implements IFeastTableService {
 			_repository.deleteById(id);		
 	}
 
+
+
+	@Override
+	public FeastTable findById(Long id) {
+		return _repository.findById(id).get();
+	}
+
 }
