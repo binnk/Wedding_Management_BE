@@ -7,4 +7,5 @@ public interface IFeastServiceService {
 	FeastServiceDTO findByFeastId(Long feastId);
 	FeastService findByFeastIdAndServiceId(Long feastId, Long serviceId);
 	FeastService save(FeastServiceDTO dto);
+	void deleteById(Long feastId, Long serviceId);
 }

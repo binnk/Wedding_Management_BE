@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "table_category")
 public class TableCategory {
@@ -22,7 +24,11 @@ public class TableCategory {
 	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "more_info")
+	private String moreInfo;
+	
 	@OneToMany(mappedBy = "tableCategory")
+	@JsonIgnore
 	private List<FeastTable> feastTables = new ArrayList<FeastTable>();
 
 	public Long getId() {
@@ -47,6 +53,14 @@ public class TableCategory {
 
 	public void setFeastTables(List<FeastTable> feastTables) {
 		this.feastTables = feastTables;
+	}
+
+	public String getMoreInfo() {
+		return moreInfo;
+	}
+
+	public void setMoreInfo(String moreInfo) {
+		this.moreInfo = moreInfo;
 	}
 	
 	

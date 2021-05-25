@@ -15,6 +15,7 @@ public class ServiceConverter {
 		result.setName(entity.getName());
 		result.setPrice(entity.getPrice());
 		result.setImg(entity.getImg());
+		result.setMoreInfo(entity.getMoreInfo());
 
 		return result;
 	}
@@ -26,6 +27,7 @@ public class ServiceConverter {
 		result.setName(dto.getName());
 		result.setPrice(dto.getPrice());
 		result.setImg(dto.getImg());
+		result.setMoreInfo(dto.getMoreInfo());
 		
 		return result;
 	}

@@ -9,6 +9,8 @@ public class ServiceDTO {
 	private String img;
 	
 	private Long price;
+	
+	private String moreInfo;
 
 	public Long getId() {
 		return id;
@@ -41,4 +43,14 @@ public class ServiceDTO {
 	public void setPrice(Long price) {
 		this.price = price;
 	}
+
+	public String getMoreInfo() {
+		return moreInfo;
+	}
+
+	public void setMoreInfo(String moreInfo) {
+		this.moreInfo = moreInfo;
+	}
+	
+	
 }

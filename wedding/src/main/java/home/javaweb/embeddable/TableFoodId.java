@@ -14,6 +14,18 @@ public class TableFoodId implements Serializable {
 	@Column(name = " food_id")
 	private Long foodId;
 
+	
+
+	public TableFoodId() {
+		super();
+	}
+
+	public TableFoodId(Long feastTableId, Long foodId) {
+		super();
+		this.feastTableId = feastTableId;
+		this.foodId = foodId;
+	}
+
 	public Long getFeastTableId() {
 		return feastTableId;
 	}
