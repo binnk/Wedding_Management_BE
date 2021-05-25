@@ -40,7 +40,6 @@ public class FeastEntity {
 	private Float deposit;
 	@Column(name = "note")
 	private String note;
-
 	@ManyToOne
 	@JoinColumn(name = "shift_id")
 	private ShiftEntity shift;
