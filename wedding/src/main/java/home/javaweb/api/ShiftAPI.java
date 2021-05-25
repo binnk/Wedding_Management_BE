@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import home.javaweb.entity.ShiftEntity;
 import home.javaweb.service.IShiftService;
+
 @CrossOrigin
 @RequestMapping("/api")
 @RestController
-@CrossOrigin
 public class ShiftAPI {
   @Autowired
   private IShiftService shiftser;
