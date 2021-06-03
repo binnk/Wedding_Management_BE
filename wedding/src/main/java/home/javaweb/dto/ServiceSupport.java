@@ -5,6 +5,7 @@ import home.javaweb.entity.Service;
 public class ServiceSupport {
 	private Service service;	
 	private int count;	
+	private Long unitPrice;
 	private Long totalPrice;	
 	private String note;
 	
@@ -39,6 +40,14 @@ public class ServiceSupport {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

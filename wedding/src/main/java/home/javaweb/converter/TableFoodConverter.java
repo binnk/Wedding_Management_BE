@@ -48,6 +48,7 @@ public class TableFoodConverter {
 			foodSupport.setCount(entity.getCount());
 			foodSupport.setNote(entity.getNote());
 			foodSupport.setTotalPrice(entity.getTotalPrice());
+			foodSupport.setUnitPrice(entity.getUnitPrice());
 			
 			result.getFoods().add(foodSupport);
 		}
@@ -67,6 +68,7 @@ public class TableFoodConverter {
 		result.setCount(dto.getCount());
 		result.setTotalPrice(dto.getTotalPrice());
 		result.setNote(dto.getNote());
+		result.setUnitPrice(dto.getUnitPrice());
 		
 		Long feastTableId = dto.getFeastTableId();
 		Long foodId = dto.getFoodId();
