@@ -10,4 +10,5 @@ public interface IServiceService {
 	ServiceDTO save(ServiceDTO dto);
 	ServiceDTO findById(Long id);
 	void deleteById(Long[] ids);
+
 }

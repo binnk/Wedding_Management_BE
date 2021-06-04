@@ -22,7 +22,7 @@ public class FineService implements IFineService {
 	@Override
 	public Fine findById(Long id) {
 		// TODO Auto-generated method stub
-		return _repository.getOne(id);
+		return _repository.findById(id).get();
 	}
 
 	@Override

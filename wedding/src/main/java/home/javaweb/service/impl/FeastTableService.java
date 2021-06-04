@@ -63,4 +63,11 @@ public class FeastTableService implements IFeastTableService {
 		return _repository.findById(id).get();
 	}
 
+
+
+	@Override
+	public FeastTable save(FeastTable entity) {
+		return _repository.save(entity);
+	}
+
 }

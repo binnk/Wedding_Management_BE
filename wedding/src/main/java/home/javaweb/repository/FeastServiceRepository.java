@@ -27,6 +27,8 @@ public interface FeastServiceRepository extends JpaRepository<FeastService, Feas
 	List<FeastService> findByFeastId(Long feastId);
 	
 	FeastService findByFeastIdAndServiceId(Long feastId, Long serviceId);
+	@Query(value = "SELECT SUM(fs.total_price) FROM feast_service fs WHERE fs.feast_id = ?1", nativeQuery = true)
+	Long getTotalPrice(Long feastId);
 	
 //	@Query(value = "INSERT INTO feast_service(feast_id, service_id, count) "
 //			+ "values (:feastId, :serviceId, :count)",
