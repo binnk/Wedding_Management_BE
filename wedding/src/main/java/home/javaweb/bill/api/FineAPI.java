@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.javaweb.bill.entity.Bill;
 import home.javaweb.bill.entity.Fine;
 import home.javaweb.bill.service.IBillService;
 import home.javaweb.bill.service.IFineService;
@@ -32,7 +33,7 @@ public class FineAPI {
 
 	@GetMapping("/fines")
 	public ResponseEntity<Object> findAll(){
-		System.out.println(_billService.calcTotalTablePrice(1L));
+		Bill bill = _billService.getBillByFeast(1L);
 		List<Fine> fines = _service.findAll();
 		if(fines == null || fines.isEmpty())
 			return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);

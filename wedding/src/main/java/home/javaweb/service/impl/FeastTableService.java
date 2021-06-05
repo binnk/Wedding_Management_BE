@@ -76,4 +76,9 @@ public class FeastTableService implements IFeastTableService {
 		return _repository.save(entity);
 	}
 
+	@Override
+	public Long getTotalPrice(Long feastId) {
+		return _repository.getTotalPriceByFeast(feastId);
+	}
+
 }

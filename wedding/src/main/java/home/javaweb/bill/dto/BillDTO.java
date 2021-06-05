@@ -1,5 +1,6 @@
 package home.javaweb.bill.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import home.javaweb.bill.entity.Fine;
@@ -8,13 +9,13 @@ import home.javaweb.entity.FeastEntity;
 public class BillDTO {
 	private Long		 id;
 	private FeastEntity	 feast;
-	private Date 		 dateOfPayment;
+	private LocalDate 		 dateOfPayment;
 	private Long		 totalTablePrice;
 	private Long		 totalServicePrice;
 	private Fine		 fine;	
 	private Long		 totalBill;
 	private Long		 unpaidMoney;
-	
+	private boolean		 status;
 	
 	public Long getId() {
 		return id;
@@ -28,10 +29,10 @@ public class BillDTO {
 	public void setFeast(FeastEntity feast) {
 		this.feast = feast;
 	}
-	public Date getDateOfPayment() {
+	public LocalDate getDateOfPayment() {
 		return dateOfPayment;
 	}
-	public void setDateOfPayment(Date dateOfPayment) {
+	public void setDateOfPayment(LocalDate dateOfPayment) {
 		this.dateOfPayment = dateOfPayment;
 	}
 	public Long getTotalTablePrice() {
@@ -64,6 +65,13 @@ public class BillDTO {
 	public void setUnpaidMoney(Long unpaidMoney) {
 		this.unpaidMoney = unpaidMoney;
 	}
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	
 	
 }

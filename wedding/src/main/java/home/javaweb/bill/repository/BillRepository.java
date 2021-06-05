@@ -6,4 +6,6 @@ import home.javaweb.bill.entity.Bill;
 
 public interface BillRepository extends JpaRepository<Bill, Long> {
 
+	Bill findByFeastId(Long feastId);
+
 }

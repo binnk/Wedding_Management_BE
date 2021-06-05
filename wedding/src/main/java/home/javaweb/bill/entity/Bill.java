@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import home.javaweb.entity.FeastEntity;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -31,9 +32,7 @@ public class Bill {
 	private FeastEntity feast;
 	
 	@Column(name = "date_of_payment")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private Date dateOfPayment;
+	private LocalDate dateOfPayment;
 	
 	@Column(name = "total_table_price")
 	private Long totalTablePrice;
@@ -45,11 +44,17 @@ public class Bill {
 	@JoinColumn(name =  "fine_id")
 	private Fine fine;
 	
+	@Column(name = "total_fine")
+	private Long totalFine;
+	
 	@Column(name = "total_bill")
 	private Long totalBill;
 	
 	@Column(name = "unpaid_money")
 	private Long unpaidMoney;
+	
+	@Column(name = "status")
+	private int status;
 
 	public Long getId() {
 		return id;
@@ -67,11 +72,11 @@ public class Bill {
 		this.feast = feast;
 	}
 
-	public Date getDateOfPayment() {
+	public LocalDate getDateOfPayment() {
 		return dateOfPayment;
 	}
 
-	public void setDateOfPayment(Date dateOfPayment) {
+	public void setDateOfPayment(LocalDate dateOfPayment) {
 		this.dateOfPayment = dateOfPayment;
 	}
 
@@ -113,6 +118,23 @@ public class Bill {
 
 	public void setUnpaidMoney(Long unpaidMoney) {
 		this.unpaidMoney = unpaidMoney;
+	}
+
+
+	public Long getTotalFine() {
+		return totalFine;
+	}
+
+	public void setTotalFine(Long totalFine) {
+		this.totalFine = totalFine;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

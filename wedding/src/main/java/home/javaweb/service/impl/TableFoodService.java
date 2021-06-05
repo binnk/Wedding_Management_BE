@@ -56,18 +56,21 @@ public class TableFoodService implements ITableFoodService {
 	}
 
 	@Override
-	public Long getTotalPrice(Long feastTableId) {
+	public Long calcUnitTablePrice(Long feastTableId) {
 		return _repository.getTotalPriceByFeastTable(feastTableId);
 	}
 	
+	
 	// Update FeastTable when save TableFood
 	private void UpdateFeastTable(Long feastTableId) {
-		Long unitTablePrice = getTotalPrice(feastTableId);
+		Long unitTablePrice = calcUnitTablePrice(feastTableId);
 		FeastTable feastTable = _feastTableService.findById(feastTableId);
 		// Update Unit_Price of FeastTable
 		feastTable.setUnitPriceTable(unitTablePrice);
 		_feastTableService.save(feastTable);
 		
 	}
+
+
 
 }
