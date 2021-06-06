@@ -1,10 +1,13 @@
 package home.javaweb.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,24 +28,44 @@ public class UserEntity {
 	private String username;
 	@Column(name = "password")
 	private String password;
+	@Column(name = "email")
+	private String email;
 	@Column(name = "fullname")
 	private String fullname;
 	@Column(name = "birthday")
 	private String birthday;
 	
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role", 
 				joinColumns = @JoinColumn(name = "user_id"),
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private List<RoleEntity> roles = new ArrayList<RoleEntity>();
+	private Set<RoleEntity> roles = new HashSet<>();
 	
+	public UserEntity(String username, String password, String email, String fullname, String birthday) {
 
-	public List<RoleEntity> getRoles() {
-		return roles;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.fullname = fullname;
+		this.birthday = birthday;
 	}
 
-	public void setRoles(List<RoleEntity> roles) {
+	public UserEntity() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Set<RoleEntity> getRoles() {
+		return roles;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public void setRoles(Set<RoleEntity> roles) {
 		this.roles = roles;
 	}
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.service.IFeastService;
 
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -25,7 +27,8 @@ public class FeastAPI {
   @Autowired
   private IFeastService  feastser;
   //some thing change
-  @GetMapping(path = "/feast")
+   @PreAuthorize("hasRole('USER')")  
+   @GetMapping(path = "/feast")
 	public List<FeastDTO> weddingPage() {
 		return feastser.findAll();
 	}
@@ -49,6 +52,7 @@ public class FeastAPI {
 		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
+	
 	@DeleteMapping(path="feast/{id}")
 	public void deleteFeast (@PathVariable("id") Long id ) {
 		 feastser.delete(id);
