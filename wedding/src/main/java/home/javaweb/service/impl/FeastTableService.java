@@ -37,6 +37,9 @@ public class FeastTableService implements IFeastTableService {
 		if(minPriceTable > record.getUnitPriceTable())
 			record.setUnitPriceTable(minPriceTable);
 		
+		int count = record.getNumberTables() + record.getReverseTables();
+		record.setTotalPrice(count * minPriceTable);
+		
 		_repository.save(record);
 		FeastTableDTO result = findByFeastId(dto.getFeastId());
 		
@@ -72,6 +75,9 @@ public class FeastTableService implements IFeastTableService {
 
 		if(minPriceTable > entity.getUnitPriceTable())
 			entity.setUnitPriceTable(minPriceTable);
+		
+		int count = entity.getNumberTables() + entity.getReverseTables();
+		entity.setTotalPrice(count * minPriceTable);
 		
 		return _repository.save(entity);
 	}

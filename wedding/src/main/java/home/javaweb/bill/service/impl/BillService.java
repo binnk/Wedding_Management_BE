@@ -1,14 +1,12 @@
 package home.javaweb.bill.service.impl;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import home.javaweb.bill.dto.BillDTO;
 import home.javaweb.bill.entity.Bill;
 import home.javaweb.bill.entity.Fine;
 import home.javaweb.bill.repository.BillRepository;
@@ -33,49 +31,11 @@ public class BillService implements IBillService {
 	@Autowired 
 	private IFeastService _feastService;
 	
-	@Override
-	public BillDTO findByFeastId(Long feastId) {
-		BillDTO result = new BillDTO();
-		
-
-		
-		return null;
-	}
-	
-	
-	public Long calcTotalServicePrice(Long feastId) {
-		Long result = _feastSService.getTotalPriceByFeast(feastId);
-		return result;			
-	}
-	
-	public Long calcTotalTablePrice(Long feastId) {
-		Long result = _fTableService.getTotalPrice(feastId);
-		return result;			
-	}
 
 
 	@Override
 	public void save(Bill entity) {
-		Long feastId = entity.getFeast().getId();
-		
-		Long totalServicePrice = calcTotalServicePrice(feastId);
-		Long totalTablePrice = calcTotalTablePrice(feastId);
-		
-		Long totalBill = totalServicePrice + totalTablePrice;
-		
-		//Calculate fine by day
-		Fine fine = _fineService.findById(entity.getFine().getId());
-		LocalDate currentDate = LocalDate.now();
-		FeastEntity feast = _feastService.findById(feastId);
-		LocalDate dateOfPayment = feast.getDateOfOrganization();
-		
-		//Calculate currentDate - dateOfPayment
-		Long overdueDay = ChronoUnit.DAYS.between(dateOfPayment, currentDate);
-		if (overdueDay < 0)
-			overdueDay = 0L;
-		
-		Long totalFine = totalBill * fine.getPercent() * overdueDay / 100;
-		
+		 _repository.save(entity);		
 	}
 	
 //	public void test() {
@@ -135,5 +95,37 @@ public class BillService implements IBillService {
 		return entity;
 		
 	}
+
+	@Override
+	public Bill save(Long feastId) {
+		Bill bill = getBillByFeast(feastId);
+		// Bill has been payed
+		bill.setStatus(1);
+		
+		return _repository.save(bill);
+		
+	}
+
+
+	public Long calcTotalServicePrice(Long feastId) {
+		Long result = _feastSService.getTotalPriceByFeast(feastId);
+		return result;			
+	}
 	
+	public Long calcTotalTablePrice(Long feastId) {
+		Long result = _fTableService.getTotalPrice(feastId);
+		return result;			
+	}
+
+	@Override
+	public List<Bill> findByStatus(int status) {
+		return _repository.findByStatus(status);
+	}
+
+	@Override
+	public void deleteByFeast(Long feastId) {
+		_repository.deleteByFeastId(feastId);
+		
+	}
+
 }

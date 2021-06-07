@@ -1,12 +1,15 @@
 package home.javaweb.bill.service;
 
-import home.javaweb.bill.dto.BillDTO;
+import java.util.List;
+
 import home.javaweb.bill.entity.Bill;
 
 public interface IBillService {
-	BillDTO findByFeastId(Long feastId);
 	Long calcTotalServicePrice(Long feastId);
 	Long calcTotalTablePrice(Long feastId);
 	Bill getBillByFeast(Long feastId);
 	void save(Bill entity);
+	Bill save(Long feastId);
+	List<Bill> findByStatus(int status);
+	void deleteByFeast(Long feastId);
 }

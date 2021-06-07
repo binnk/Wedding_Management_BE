@@ -55,7 +55,12 @@ public class Bill {
 	
 	@Column(name = "status")
 	private int status;
-
+	
+	public Bill() {
+		this.fine = new Fine();
+		fine.setId(1L);
+	}
+	
 	public Long getId() {
 		return id;
 	}
