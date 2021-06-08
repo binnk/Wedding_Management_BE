@@ -27,13 +27,10 @@ public class FineAPI {
 
 	@Autowired
 	private IFineService _service;
-	
-	@Autowired
-	private IBillService _billService;
+		
 
 	@GetMapping("/fines")
 	public ResponseEntity<Object> findAll(){
-		Bill bill = _billService.getBillByFeast(1L);
 		List<Fine> fines = _service.findAll();
 		if(fines == null || fines.isEmpty())
 			return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
