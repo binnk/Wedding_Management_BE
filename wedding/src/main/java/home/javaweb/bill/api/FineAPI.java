@@ -27,7 +27,7 @@ public class FineAPI {
 
 	@Autowired
 	private IFineService _service;
-	
+		
 
 	@GetMapping("/fines")
 	public ResponseEntity<Object> findAll(){
