@@ -27,13 +27,13 @@ public class FeastAPI {
   @Autowired
   private IFeastService  feastser;
   //some thing change
-   @PreAuthorize("hasRole('USER')")  
+  @PreAuthorize("hasAuthority('READ_FEAST')") 
    @GetMapping(path = "/feast")
 	public List<FeastDTO> weddingPage() {
 		return feastser.findAll();
 	}
 
-
+  @PreAuthorize("hasAuthority('READ_FEAST')") 
 	@PostMapping("/feast")
 	public ResponseEntity<FeastDTO> createFeast (@RequestBody FeastDTO feast ) throws Exception {
 		FeastDTO result = null;

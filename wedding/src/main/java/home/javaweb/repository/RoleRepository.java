@@ -1,14 +1,9 @@
 package home.javaweb.repository;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-import home.javaweb.common.ERole;
-import home.javaweb.entity.RoleEntity;
+import home.javaweb.entity.Role;
 
-@Repository
-public interface  RoleRepository extends JpaRepository<RoleEntity, Long> {
-     Optional<RoleEntity> findByName(ERole name);
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByName(String name);
 }
