@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -44,6 +46,9 @@ public class FeastTable {
 	
 	@Column(name = "unit_price_table")
 	private Long unitPriceTable;
+
+	@Column(name = "total_price")
+	private Long totalPrice;
 	
 	@Column(name = "note")
 	private String note;
@@ -114,6 +119,14 @@ public class FeastTable {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

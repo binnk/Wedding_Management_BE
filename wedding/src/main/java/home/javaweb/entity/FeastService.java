@@ -29,11 +29,15 @@ public class FeastService {
 	@Column(name = "count")
 	private int count;
 	
-	@Column(name = "note")
-	private String note;
+	@Column(name = "unit_price")
+	private Long unitPrice;
 	
 	@Column(name = "total_price")
 	private Long totalPrice;
+	
+	@Column(name = "note")
+	private String note;
+	
 
 	public FeastServiceId getId() {
 		return id;
@@ -81,6 +85,14 @@ public class FeastService {
 
 	public void setTotalPrice(Long totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

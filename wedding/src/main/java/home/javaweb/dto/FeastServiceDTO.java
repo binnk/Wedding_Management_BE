@@ -3,6 +3,8 @@ package home.javaweb.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+
 import home.javaweb.entity.FeastEntity;
 
 public class FeastServiceDTO {
@@ -12,6 +14,7 @@ public class FeastServiceDTO {
 	private Long feastId;	
 	private Long serviceId;	
 	private int count;	
+	private Long unitPrice;
 	private Long totalPrice;	
 	private String note;
 	
@@ -72,6 +75,14 @@ public class FeastServiceDTO {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

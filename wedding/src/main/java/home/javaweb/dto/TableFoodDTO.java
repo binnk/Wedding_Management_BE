@@ -21,9 +21,10 @@ public class TableFoodDTO {
 	//Request	
 	private Long feastTableId;	
 	private Long foodId;	
+	private int count; 
+	private Long unitPrice;
 	private Long totalPrice;	
 	private String note;
-	private int count;
 	
 	
 	
@@ -68,6 +69,12 @@ public class TableFoodDTO {
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
 

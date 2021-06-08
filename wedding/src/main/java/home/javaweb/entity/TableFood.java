@@ -25,14 +25,18 @@ public class TableFood {
 	@MapsId("foodId")
 	private Food food;
 	
+	@Column(name = "count")
+	private int count;
+	
+	@Column(name = "unit_price")
+	private Long unitPrice;
+	
 	@Column(name="total_price")
 	private Long totalPrice;
 	
 	@Column(name="note")
 	private String note;
 	
-	@Column(name = "count")
-	private int count;
 
 	public TableFoodId getId() {
 		return id;
@@ -80,6 +84,14 @@ public class TableFood {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

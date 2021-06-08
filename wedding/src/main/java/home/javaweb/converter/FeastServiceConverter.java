@@ -41,6 +41,7 @@ public class FeastServiceConverter {
 			serviceSupport.setCount(fs.getCount());
 			serviceSupport.setTotalPrice(fs.getTotalPrice());
 			serviceSupport.setNote(fs.getNote());
+			serviceSupport.setUnitPrice(fs.getUnitPrice());
 			result.getServices().add(serviceSupport);
 		}
 
@@ -65,6 +66,7 @@ public class FeastServiceConverter {
 		result.setCount(dto.getCount());
 		result.setTotalPrice(dto.getTotalPrice());
 		result.setNote(dto.getNote());
+		result.setUnitPrice(dto.getUnitPrice());
 
 
 		return result;

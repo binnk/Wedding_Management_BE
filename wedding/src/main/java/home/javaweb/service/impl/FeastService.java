@@ -6,6 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import home.javaweb.bill.entity.Bill;
+import home.javaweb.bill.entity.Fine;
+import home.javaweb.bill.service.IBillService;
 import home.javaweb.converter.FeastConverter;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
@@ -23,6 +26,8 @@ public class FeastService implements IFeastService {
 	private LobbyRepository lobbyRepo;
 	@Autowired
 	private ShiftRepository shiftRepo;
+	@Autowired
+	private IBillService billService;
 
 	@Override
 	public List<FeastDTO> findAll() {
@@ -42,17 +47,23 @@ public class FeastService implements IFeastService {
 		FeastEntity result = null;
 		FeastEntity entity = null;
 		try {
-			if (!feast.IsAnyNullOrEmty()) {
+
 				entity = FeastConverter.getIntance().DtoToEntity(feast);
 				if (lobbyRepo.findById(feast.getLobbyId()) != null) {
 					entity.setId_lobby(lobbyRepo.findById(feast.getLobbyId()).get());
 					if (shiftRepo.findById(feast.getIdShift()) != null) {
 						entity.setshift(shiftRepo.findById(feast.getIdShift()).get());
 						result = feastRepo.save(entity);
+						
+						// Auto add Bill when add Feast
+						Bill bill = new Bill();
+						bill.setFeast(result);			
+						billService.save(bill);
+						
 						return FeastConverter.getIntance().EntityToDto(result);
 					}
 				}
-			}
+			
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}

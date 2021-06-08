@@ -5,6 +5,7 @@ import home.javaweb.entity.Food;
 public class FoodSupport {
 	private Food food;
 	private int count;
+	private Long unitPrice;
 	private Long totalPrice;
 	private String note;
 	
@@ -32,6 +33,12 @@ public class FoodSupport {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public Long getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(Long unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	
 	

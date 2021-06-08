@@ -22,7 +22,7 @@ import javax.persistence.Table;
 		@Column(name = "maxtable")
 		private int maxtable;
 		@Column(name = "min_unitpricetable")
-		private int min_unitpricetable;
+		private Long min_unitpricetable;
 		public Long getId() {
 			return id;
 		}
@@ -53,10 +53,10 @@ import javax.persistence.Table;
 		public void setMaxtable(int maxtable) {
 			this.maxtable = maxtable;
 		}
-		public int getMin_unitpricetable() {
+		public Long getMin_unitpricetable() {
 			return min_unitpricetable;
 		}
-		public void setMin_unitpricetable(int min_unitpricetable) {
+		public void setMin_unitpricetable(Long min_unitpricetable) {
 			this.min_unitpricetable = min_unitpricetable;
 		}
 }

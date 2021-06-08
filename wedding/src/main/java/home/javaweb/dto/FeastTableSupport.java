@@ -1,9 +1,5 @@
 package home.javaweb.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import home.javaweb.entity.FeastTable;
 import home.javaweb.entity.TableCategory;
 
 public class FeastTableSupport {
@@ -12,6 +8,7 @@ public class FeastTableSupport {
 	private int numberTables;
 	private int reverseTables;	
 	private Long unitPriceTable;
+	private Long totalPrice;
 	private String note;
 	
 	
@@ -52,6 +49,12 @@ public class FeastTableSupport {
 	}
 	public void setNote(String note) {
 		this.note = note;
+	}
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

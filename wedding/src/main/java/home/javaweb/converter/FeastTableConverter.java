@@ -40,6 +40,7 @@ public class FeastTableConverter {
 			support.setNumberTables(ft.getNumberTables());
 			support.setReverseTables(ft.getReverseTables());
 			support.setUnitPriceTable(ft.getUnitPriceTable());
+			support.setTotalPrice(ft.getTotalPrice());
 			
 			result.getFeastTables().add(support);
 		}
@@ -57,6 +58,7 @@ public class FeastTableConverter {
 		result.setReverseTables(dto.getReverseTables());
 		result.setUnitPriceTable(dto.getUnitPriceTable());
 		result.setNote(dto.getNote());
+		result.setTotalPrice(dto.getTotalPrice());
 
 		return result;
 	}

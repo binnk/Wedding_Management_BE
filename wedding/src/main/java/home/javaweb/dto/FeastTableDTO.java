@@ -14,12 +14,13 @@ public class FeastTableDTO {
 	
 	
 	//Request
+	private Long id;
+	private Long feastId;
+	private Long tableCategoryId;
 	private int numberTables;
 	private int reverseTables;	
 	private Long unitPriceTable;	
-	private Long feastId;
-	private Long tableCategoryId;
-	private Long id;
+	private Long totalPrice;
 	private String note;
 
 	public Long getId() {
@@ -94,6 +95,14 @@ public class FeastTableDTO {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	
