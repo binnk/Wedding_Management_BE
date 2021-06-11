@@ -1,23 +1,70 @@
 package home.javaweb.dto;
 public class LobbyDTO {
-	
+	private Long id;
 	private String name;
-	private String id_lobycategory;
+	private String LobbyCategory;
+	private Long idLobbyCategory;	
 	private String image;
-	private int maxtable;
-	private int min_unitpricetable;
+	private int maxTable;
 	
+	private Long minUnitPriceTable;
+	public Long getMinUnitPriceTable() {
+		return minUnitPriceTable;
+	}
+	public void setMinUnitPriceTable(Long minUnitPriceTable) {
+		this.minUnitPriceTable = minUnitPriceTable;
+	}
+	public Long getIdLobbyCategory() {
+		return idLobbyCategory;
+	}
+	public void setIdLobbyCategory(Long idLobbyCategory) {
+		this.idLobbyCategory = idLobbyCategory;
+	}
+	public LobbyDTO idLobbyCategory(Long id) {
+		this.idLobbyCategory = id;
+		return this;
+	}
+	public LobbyDTO name(String name) {
+		this.name = name;
+		return this;
+	}
+	public LobbyDTO id(Long id) {
+		this.id = id;
+		return this;
+	}
+	public LobbyDTO LobbyCategory(String Lobbycategory) {
+		this.LobbyCategory = Lobbycategory;
+		return this;
+	}
+	public LobbyDTO image(String image) {
+		this.image = image;
+		return this;
+	}
+	public LobbyDTO maxTable(int maxTable) {
+		this.maxTable = maxTable;
+		return this;
+	}
+	public LobbyDTO minUnitPriceTable(Long minUnitPriceTable) {
+		this.minUnitPriceTable = minUnitPriceTable;
+		return this;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getId_lobycategory() {
-		return id_lobycategory;
+	public String getLobbycategory() {
+		return LobbyCategory;
 	}
-	public void setId_lobycategory(String id_lobycategory) {
-		this.id_lobycategory = id_lobycategory;
+	public void setLobbycategory(String id_lobycategory) {
+		this.LobbyCategory = id_lobycategory;
 	}
 	public String getImage() {
 		return image;
@@ -26,15 +73,10 @@ public class LobbyDTO {
 		this.image = image;
 	}
 	public int getMaxtable() {
-		return maxtable;
+		return maxTable;
 	}
 	public void setMaxtable(int maxtable) {
-		this.maxtable = maxtable;
+		this.maxTable = maxtable;
 	}
-	public int getMin_unitpricetable() {
-		return min_unitpricetable;
-	}
-	public void setMin_unitpricetable(int min_unitpricetable) {
-		this.min_unitpricetable = min_unitpricetable;
-	}
+	
 }

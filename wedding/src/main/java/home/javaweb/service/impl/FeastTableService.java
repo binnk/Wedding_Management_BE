@@ -32,7 +32,7 @@ public class FeastTableService implements IFeastTableService {
 		FeastTable record = _converter.toEntity(dto);
 		
 		FeastEntity feastEntity = _feastService.findById(dto.getFeastId());
-		Long minPriceTable = feastEntity.getId_lobby().getMin_unitpricetable();
+		Long minPriceTable = feastEntity.getId_lobby().getMinUnitPriceTable();
 
 		if(minPriceTable > record.getUnitPriceTable())
 			record.setUnitPriceTable(minPriceTable);
@@ -71,7 +71,7 @@ public class FeastTableService implements IFeastTableService {
 	@Override
 	public FeastTable save(FeastTable entity) {
 		FeastEntity feastEntity = _feastService.findById(entity.getFeast().getId());
-		Long minPriceTable = feastEntity.getId_lobby().getMin_unitpricetable();
+		Long minPriceTable = feastEntity.getId_lobby().getMinUnitPriceTable();
 
 		if(minPriceTable > entity.getUnitPriceTable())
 			entity.setUnitPriceTable(minPriceTable);
