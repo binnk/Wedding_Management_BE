@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 	@Entity
@@ -15,19 +17,62 @@ import javax.persistence.Table;
 		private Long id;
 		@Column(name = "name")
 		private String name;
-		@Column(name = "id_lobbycategory")
-		private String id_lobycategory;
+		@ManyToOne
+		@JoinColumn(name = "lobbycategory_id")
+		private  LobbyCategoryEntity lobbyCategory;
 		@Column(name = "image")
 		private String image;
 		@Column(name = "maxtable")
-		private int maxtable;
+		private int maxTable;
 		@Column(name = "min_unitpricetable")
-		private Long min_unitpricetable;
+		private Long minUnitPriceTable;
+		@Column(name ="active")
+		private Boolean active;
+		public Boolean getActive() {
+			return active;
+		}
+		public void setActive(Boolean active) {
+			this.active = active;
+		}
+		public LobbyEntity id(Long id) {
+			this.id = id;
+			return this;
+		}
+		public LobbyEntity active(Boolean bool) {
+			this.active = bool;
+			return this;
+		}
+		public LobbyEntity name(String name) {
+			this.name = name;
+			return this;
+		}
+		public LobbyEntity lobbyCategory(LobbyCategoryEntity lobbyCategory) {
+			this.lobbyCategory = lobbyCategory;
+			return this;
+		}
+		public LobbyEntity image(String image) {
+			this.image = image;
+			return this;
+		}
+		public LobbyEntity maxtable(int maxtable) {
+			this.maxTable = maxtable;
+			return this;
+		}
+		public LobbyEntity minUnitPriceTable(Long minUnitPriceTable) {
+			this.minUnitPriceTable = minUnitPriceTable;
+			return this;
+		}
 		public Long getId() {
 			return id;
 		}
 		public void setId(Long id) {
 			this.id = id;
+		}
+		public LobbyCategoryEntity getLobbyCategory() {
+			return lobbyCategory;
+		}
+		public void setLobbyCategory(LobbyCategoryEntity lobbyCategory) {
+			this.lobbyCategory = lobbyCategory;
 		}
 		public String getName() {
 			return name;
@@ -35,28 +80,23 @@ import javax.persistence.Table;
 		public void setName(String name) {
 			this.name = name;
 		}
-		public String getId_lobycategory() {
-			return id_lobycategory;
-		}
-		public void setId_lobycategory(String id_lobycategory) {
-			this.id_lobycategory = id_lobycategory;
-		}
+	
 		public String getImage() {
 			return image;
 		}
 		public void setImage(String image) {
 			this.image = image;
 		}
-		public int getMaxtable() {
-			return maxtable;
+		public int getMaxTable() {
+			return maxTable;
 		}
-		public void setMaxtable(int maxtable) {
-			this.maxtable = maxtable;
+		public void setMaxTable(int maxtable) {
+			this.maxTable = maxtable;
 		}
-		public Long getMin_unitpricetable() {
-			return min_unitpricetable;
+		public Long getMinUnitPriceTable() {
+			return minUnitPriceTable;
 		}
-		public void setMin_unitpricetable(Long min_unitpricetable) {
-			this.min_unitpricetable = min_unitpricetable;
+		public void setMinUnitPriceTable(Long min_unitpricetable) {
+			this.minUnitPriceTable = min_unitpricetable;
 		}
 }

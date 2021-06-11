@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 	@Entity
 	@Table(name = "lobby_category")
 	public class LobbyCategoryEntity {
@@ -16,7 +18,28 @@ import javax.persistence.Table;
 		@Column(name = "name")
 		private String name;
 		@Column(name = "mintable")
-		private String mintable;
+		private int mintable;
+		@JsonIgnore
+		@Column(name = "active")
+		Boolean active;
+		public Boolean getActive() {
+			return active;
+		}
+		public void setActive(Boolean active) {
+			this.active = active;
+		}
+		public  LobbyCategoryEntity id(Long id) {
+			this.id = id;
+			return this;
+		}
+		public  LobbyCategoryEntity name(String name) {
+			this.name = name;
+			return this;
+		}
+		public  LobbyCategoryEntity mintable(int mintable) {
+			this.mintable = mintable;
+			return this;
+		}
 		public Long getId() {
 			return id;
 		}
@@ -29,10 +52,10 @@ import javax.persistence.Table;
 		public void setName(String name) {
 			this.name = name;
 		}
-		public String getMintable() {
+		public int getMintable() {
 			return mintable;
 		}
-		public void setMintable(String mintable) {
+		public void setMintable(int mintable) {
 			this.mintable = mintable;
 		}
 	}
