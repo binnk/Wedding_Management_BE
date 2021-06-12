@@ -32,6 +32,10 @@ public class FeastConverter {
     		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
     		 String strDate = formatter.format(entity.getWedding_date());  
     		 result.setWeddingDate(strDate);
+    		 
+    		 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    		 String dateOgnz = entity.getDateOfOrganization().format(dtf);
+    		 result.setDateOfOrganization(dateOgnz);
     	 }
     	 return result;
     }
