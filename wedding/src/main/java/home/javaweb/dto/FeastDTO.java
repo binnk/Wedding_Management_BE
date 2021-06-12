@@ -1,5 +1,7 @@
 package home.javaweb.dto;
 
+import java.time.LocalDate;
+
 public class FeastDTO {
 	
 	private Long id;
@@ -14,6 +16,7 @@ public class FeastDTO {
 	private Float deposit;
 	private String note;
 	private String groomName;
+	private String dateOfOrganization;
 	public String getNameShift() {
 		return nameShift;
 	}
@@ -86,6 +89,16 @@ public class FeastDTO {
 	}
 	public void setGroomName(String groomName) {
 		this.groomName = groomName;
+	}
+	
+	public String getDateOfOrganization() {
+		return dateOfOrganization;
+	}
+	public void setDateOfOrganization(String dateOfOrganization) {
+		this.dateOfOrganization = dateOfOrganization;
+	}
+	public void setDeposit(Float deposit) {
+		this.deposit = deposit;
 	}
 	public boolean IsAnyNullOrEmty() {
 		

@@ -2,6 +2,8 @@ package home.javaweb.converter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import home.javaweb.dto.FeastDTO;
@@ -45,6 +47,9 @@ public class FeastConverter {
     	Date  date = formatter.parse(dto.getWeddingDate());
     	result.setWedding_date(date);
     	result.setNote(dto.getNote());
+    	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    	LocalDate dateOgnz = LocalDate.parse(dto.getDateOfOrganization(), dtf);
+    	result.setDateOfOrganization(dateOgnz);
     	
     	
     	return result;
