@@ -108,6 +108,7 @@ public class BillService implements IBillService {
 		Bill bill = getBillByFeast(feastId);
 		// Bill has been payed
 		bill.setStatus(1);
+		bill.setUnpaidMoney(0L);
 		Bill result = _repository.save(bill);
 		
 		_reportService.save(bill);
