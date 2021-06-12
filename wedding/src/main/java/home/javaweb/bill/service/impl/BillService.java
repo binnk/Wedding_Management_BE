@@ -66,7 +66,11 @@ public class BillService implements IBillService {
 		Bill entity = _repository.findByFeastId(feastId);
 		
 		Long totalServicePrice = calcTotalServicePrice(feastId);
+		if(totalServicePrice == null)
+			totalServicePrice = 0L;
 		Long totalTablePrice = calcTotalTablePrice(feastId);
+		if(totalTablePrice == null)
+			totalTablePrice = 0L;
 		
 		Long totalBill = totalServicePrice + totalTablePrice;
 		
