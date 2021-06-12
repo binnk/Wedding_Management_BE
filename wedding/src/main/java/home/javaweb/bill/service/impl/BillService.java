@@ -13,6 +13,7 @@ import home.javaweb.bill.repository.BillRepository;
 import home.javaweb.bill.service.IBillService;
 import home.javaweb.bill.service.IFineService;
 import home.javaweb.entity.FeastEntity;
+import home.javaweb.report.service.IReportDateService;
 import home.javaweb.service.IFeastService;
 import home.javaweb.service.IFeastServiceService;
 import home.javaweb.service.IFeastTableService;
@@ -30,6 +31,8 @@ public class BillService implements IBillService {
 	private IFineService _fineService;
 	@Autowired 
 	private IFeastService _feastService;
+	@Autowired
+	private IReportDateService _reportService;
 	
 
 
@@ -105,8 +108,11 @@ public class BillService implements IBillService {
 		Bill bill = getBillByFeast(feastId);
 		// Bill has been payed
 		bill.setStatus(1);
+		Bill result = _repository.save(bill);
 		
-		return _repository.save(bill);
+		_reportService.save(bill);
+			
+		return result;
 		
 	}
 

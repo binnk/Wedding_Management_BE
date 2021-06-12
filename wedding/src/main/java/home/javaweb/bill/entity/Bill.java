@@ -6,10 +6,15 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import home.javaweb.entity.FeastEntity;
+import home.javaweb.report.entity.ReportDate;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +22,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -55,6 +61,10 @@ public class Bill {
 	
 	@Column(name = "status")
 	private int status;
+	
+	@ManyToMany(mappedBy = "bills")
+	@JsonIgnore
+	private Set<ReportDate> reports = new HashSet<>();
 	
 	public Bill() {
 		this.fine = new Fine();
@@ -140,6 +150,14 @@ public class Bill {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public Set<ReportDate> getReports() {
+		return reports;
+	}
+
+	public void setReports(Set<ReportDate> reports) {
+		this.reports = reports;
 	}
 	
 	
