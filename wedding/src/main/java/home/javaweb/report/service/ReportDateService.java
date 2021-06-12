@@ -3,6 +3,7 @@ package home.javaweb.report.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,20 @@ public class ReportDateService implements IReportDateService	 {
 			return false;
 		
 		return true;
+	}
+
+	@Override
+	public List<ReportDate> findAll() {
+		LocalDate currentDate = LocalDate.now();
+		int currentMonth = currentDate.getMonthValue();
+		
+		
+		return _repository.findAll(currentMonth);
+	}
+
+	@Override
+	public List<ReportDate> findByMonth(int month) {
+		return _repository.findByMonth(month);
 	}
 
 
