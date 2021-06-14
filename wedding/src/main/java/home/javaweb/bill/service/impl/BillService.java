@@ -139,4 +139,16 @@ public class BillService implements IBillService {
 		
 	}
 
+	@Override
+	public void deleteFeastInBillById(Long billId) {
+		Bill bill = _repository.findById(billId).get();
+		Long feastId = bill.getFeast().getId();
+		bill.setFeast(null);
+		
+		_feastService.delete(feastId);
+		
+		_repository.save(bill);
+		
+	}
+
 }

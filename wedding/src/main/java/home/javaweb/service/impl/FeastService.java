@@ -17,6 +17,8 @@ import home.javaweb.repository.FeastRepository;
 import home.javaweb.repository.LobbyRepository;
 import home.javaweb.repository.ShiftRepository;
 import home.javaweb.service.IFeastService;
+import home.javaweb.service.IFeastServiceService;
+import home.javaweb.service.IFeastTableService;
 
 @Service("feastService")
 public class FeastService implements IFeastService {
@@ -28,6 +30,10 @@ public class FeastService implements IFeastService {
 	private ShiftRepository shiftRepo;
 	@Autowired
 	private IBillService billService;
+	@Autowired
+	private IFeastServiceService feastSService;
+	@Autowired
+	private IFeastTableService feastTableService;
 
 	@Override
 	public List<FeastDTO> findAll() {
@@ -95,7 +101,10 @@ public class FeastService implements IFeastService {
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+	//	 delete feast_id in feast_service
+		feastSService.deleteByFeast(id);
+		feastTableService.deleteByFeast(id);
+		
 		feastRepo.deleteById(id);
 	}
 

@@ -12,6 +12,7 @@ import home.javaweb.entity.FeastTable;
 import home.javaweb.repository.FeastTableRepository;
 import home.javaweb.service.IFeastService;
 import home.javaweb.service.IFeastTableService;
+import home.javaweb.service.ITableFoodService;
 
 
 @Service
@@ -24,6 +25,8 @@ public class FeastTableService implements IFeastTableService {
 	
 	@Autowired
 	private FeastTableConverter _converter;
+	@Autowired
+	private ITableFoodService tableFoodService;
 
 
 	@Override
@@ -85,6 +88,18 @@ public class FeastTableService implements IFeastTableService {
 	@Override
 	public Long getTotalPrice(Long feastId) {
 		return _repository.getTotalPriceByFeast(feastId);
+	}
+
+	@Override
+	public void deleteByFeast(Long id) {
+		
+		List<FeastTable> tables = _repository.findByFeastId(id);
+		Long  feastTableId = tables.get(0).getId();
+		if(feastTableId != null)
+			tableFoodService.deleteByFeastTable(feastTableId);
+		
+		_repository.deleteByFeast(id);
+		
 	}
 
 }
