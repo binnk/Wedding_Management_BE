@@ -10,6 +10,7 @@ public interface ITableFoodService  {
 	
 	/*Total price of Feast Table Where feast_table_id = feastTableId*/
 	Long calcUnitTablePrice(Long feastTableId);
+	void deleteByFeastTable(Long feastTableId);
 	
 
 }

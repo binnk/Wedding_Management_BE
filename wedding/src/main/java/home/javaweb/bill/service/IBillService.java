@@ -12,4 +12,5 @@ public interface IBillService {
 	Bill save(Long feastId);
 	List<Bill> findByStatus(int status);
 	void deleteByFeast(Long feastId);
+	void deleteFeastInBillById(Long billId);
 }

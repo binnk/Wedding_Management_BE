@@ -51,7 +51,7 @@ public class FeastAPI {
 	}
 	@DeleteMapping(path="feast/{id}")
 	public void deleteFeast (@PathVariable("id") Long id ) {
-		 feastser.delete(id);
+		 feastser.deleteById(id);
 	}
 
 }
