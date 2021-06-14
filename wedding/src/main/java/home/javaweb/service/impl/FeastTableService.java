@@ -94,9 +94,10 @@ public class FeastTableService implements IFeastTableService {
 	public void deleteByFeast(Long id) {
 		
 		List<FeastTable> tables = _repository.findByFeastId(id);
-		Long  feastTableId = tables.get(0).getId();
-		if(feastTableId != null)
+		if(tables.isEmpty() == false) {
+			Long  feastTableId = tables.get(0).getId();
 			tableFoodService.deleteByFeastTable(feastTableId);
+		}
 		
 		_repository.deleteByFeast(id);
 		

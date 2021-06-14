@@ -113,4 +113,15 @@ public class FeastService implements IFeastService {
 		FeastEntity result = feastRepo.findById(id).get();
 		return result;
 	}
+
+	@Override
+	public void deleteById(Long id) {
+		// delete all table has feast
+		feastSService.deleteByFeast(id);
+		feastTableService.deleteByFeast(id);
+		billService.deleteByFeast(id);
+		
+		feastRepo.deleteById(id);
+		
+	}
 }
