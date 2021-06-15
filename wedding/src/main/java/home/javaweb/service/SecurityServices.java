@@ -29,9 +29,11 @@ public class SecurityServices {
     private PrivilageRepository privilageRepository;
 
     public void createUser(User user) {
-        Role role = roleRepository.findByName("USER");
+    	if(userRepository.findByUsername(user.getUsername()) != null)
+    		return;
+        Role role = roleRepository.findByName("ROLE_USER");
         if (role == null)
-            role = roleRepository.save(Role.valueOf("USER"));
+            role = roleRepository.save(Role.valueOf("ROLE_USER"));
 
         Privilege privilege = privilageRepository.findByAuthority("READ_PROFILE");
         if (privilege == null)
@@ -44,9 +46,11 @@ public class SecurityServices {
     }
 
     public void createAdmin(User user) {
-        Role role = roleRepository.findByName("ADMIN");
+    	if(userRepository.findByUsername(user.getUsername()) != null)
+    		return;
+        Role role = roleRepository.findByName("ROLE_ADMIN");
         if (role == null)
-            roleRepository.save(Role.valueOf("ADMIN"));
+            roleRepository.save(Role.valueOf("ROLE_ADMIN"));
         Privilege privilege = privilageRepository.findByAuthority("EDIT_PROFILE");
         if (privilege == null)
             privilege = privilageRepository.save(new Privilege("EDIT_PROFILE"));

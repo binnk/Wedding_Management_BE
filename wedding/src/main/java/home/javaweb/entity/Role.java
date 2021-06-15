@@ -58,7 +58,7 @@ public class Role {
     public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
     }
-
+ 
 	
 
 }

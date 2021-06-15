@@ -57,7 +57,6 @@ public class Application implements CommandLineRunner {
                         	UPDATE_PER
                 )));
         Role ROLE_USER = roleRepository.save(new Role("ROLE_USER", Arrays.asList(
-                READ_USER,
                 READ_FEAST
         )));
         userRepository.save(new User(

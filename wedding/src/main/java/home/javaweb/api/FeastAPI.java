@@ -27,7 +27,7 @@ public class FeastAPI {
   @Autowired
   private IFeastService  feastser;
   //some thing change
-  @PreAuthorize("hasAuthority('READ_FEAST')") 
+  @PreAuthorize("hasAuthority('UPDATE_FEAST')") 
    @GetMapping(path = "/feast")
 	public List<FeastDTO> weddingPage() {
 		return feastser.findAll();
