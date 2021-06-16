@@ -35,6 +35,8 @@ public class ReportDateService implements IReportDateService	 {
 		
 		ReportDate existedReport = _repository.findByDate(date);
 		existedReport.getBills().add(bill);
+		_repository.save(existedReport);
+		
 		existedReport.setFeastCount(_repository.selectCountFeast(existedReport.getId()));
 		Long revenueDay = _repository.calculateRevenue(existedReport.getId());
 		existedReport.setRevenue(revenueDay);		
