@@ -69,4 +69,10 @@ public class FeastServiceService implements IFeastServiceService{
 		return _repository.getTotalPrice(feastId);
 	}
 
+	@Override
+	public void deleteByFeast(Long id) {
+		_repository.deleteByFeast(id);
+		
+	}
+
 }

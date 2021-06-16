@@ -9,4 +9,5 @@ public interface IFeastServiceService {
 	FeastService save(FeastServiceDTO dto);
 	void deleteById(Long feastId, Long serviceId);
 	Long getTotalPriceByFeast(Long feastId);
+	void deleteByFeast(Long id);
 }
