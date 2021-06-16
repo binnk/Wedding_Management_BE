@@ -34,7 +34,7 @@ public class ReportMonthService implements IReportMonthService{
 
 	private boolean isExistMonthAndYear(int month, int year) {
 		ReportMonth report = _repository.findByMonthAndYear(month, year);
-		if(report.getId() == null)
+		if(report == null)
 			return false;
 		
 		return true;
