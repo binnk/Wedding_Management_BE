@@ -31,4 +31,6 @@ public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 			+ "WHERE MONTH(rd.date) = ?1")
 	List<ReportDate> findByMonth(int month);
 
+	List<ReportDate> findAllBillByDate(LocalDate date);
+
 }

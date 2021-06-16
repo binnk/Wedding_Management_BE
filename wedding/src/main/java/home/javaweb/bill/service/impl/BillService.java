@@ -108,6 +108,7 @@ public class BillService implements IBillService {
 		Bill bill = getBillByFeast(feastId);
 		// Bill has been payed
 		bill.setStatus(1);
+		bill.setUnpaidMoney(0L);
 		Bill result = _repository.save(bill);
 		
 		_reportService.save(bill);
@@ -135,6 +136,18 @@ public class BillService implements IBillService {
 	@Override
 	public void deleteByFeast(Long feastId) {
 		_repository.deleteByFeastId(feastId);
+		
+	}
+
+	@Override
+	public void deleteFeastInBillById(Long billId) {
+		Bill bill = _repository.findById(billId).get();
+		Long feastId = bill.getFeast().getId();
+		bill.setFeast(null);
+		
+		_feastService.delete(feastId);
+		
+		_repository.save(bill);
 		
 	}
 
