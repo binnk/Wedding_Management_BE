@@ -12,5 +12,4 @@ public interface IFeastService {
      FeastDTO update(FeastDTO feast);
      FeastEntity findById(Long id);
      void delete(Long id);
-	void deleteById(Long id);
 }

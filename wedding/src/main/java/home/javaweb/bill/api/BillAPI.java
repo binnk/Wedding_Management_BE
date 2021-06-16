@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,15 +46,6 @@ public class BillAPI {
 	public ResponseEntity<Object> payBill(@PathVariable("feast-id") Long feastId){
 		Bill bill = service.save(feastId);
 		return new ResponseEntity<Object>(bill, HttpStatus.OK);
-	}
-	
-	@DeleteMapping("/feast/{bill-id}")
-	public ResponseEntity<Object> deleteFeastInBill(@PathVariable("bill-id") Long billId){
-		if(billId == null)
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		
-		service.deleteFeastInBillById(billId);
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	

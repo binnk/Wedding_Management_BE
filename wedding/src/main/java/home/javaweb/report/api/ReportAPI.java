@@ -1,7 +1,5 @@
 package home.javaweb.report.api;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import home.javaweb.report.entity.ReportDate;
@@ -43,15 +39,13 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
-	@GetMapping("/date")
-	public ResponseEntity<Object> findAllByDate(@RequestParam String date){
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    	LocalDate localDate = LocalDate.parse(date, dtf);
-		List<ReportDate> reports = reportDate.findAllBillByDate(localDate);
-		if(reports.isEmpty())
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		
-		return new ResponseEntity<Object>(reports, HttpStatus.OK);
-	}
+//	@GetMapping
+//	public ResponseEntity<Object> findAllByDate(){
+//		List<ReportDate> reports = reportDate.findAll();
+//		if(reports.isEmpty())
+//			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//		
+//		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+//	}
 	
 }

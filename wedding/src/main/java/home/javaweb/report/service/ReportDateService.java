@@ -1,6 +1,8 @@
 package home.javaweb.report.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,11 +76,6 @@ public class ReportDateService implements IReportDateService	 {
 	@Override
 	public List<ReportDate> findByMonth(int month) {
 		return _repository.findByMonth(month);
-	}
-
-	@Override
-	public List<ReportDate> findAllBillByDate(LocalDate date) {
-		return _repository.findAllBillByDate(date);
 	}
 
 

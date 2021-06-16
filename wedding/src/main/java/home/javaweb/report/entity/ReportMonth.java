@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "report_month")
 public class ReportMonth {
@@ -29,7 +27,6 @@ public class ReportMonth {
 	private Long revenue;
 	
 	@OneToMany(mappedBy = "reportMonth")
-	@JsonIgnore
 	private Set<ReportDate> reportsDate = new HashSet<>();
 
 	public Long getId() {

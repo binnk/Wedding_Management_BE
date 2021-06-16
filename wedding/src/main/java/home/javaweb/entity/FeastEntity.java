@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +34,8 @@ public class FeastEntity {
 	@Temporal(TemporalType.DATE)
 	private Date wedding_date;
 	private LocalDate dateOfOrganization; 
+	@Column(name = "number_of_tables")
+	private Long number_of_tables;
 	@Column(name = "deposit")
 	private Float deposit;
 	@Column(name = "note")
@@ -96,7 +97,12 @@ public class FeastEntity {
 	public void setId_lobby(LobbyEntity optional) {
 		this.lobby = optional;
 	}
-
+	public Long getNumber_of_table() {
+		return number_of_tables;
+	}
+	public void setNumber_of_table(Long number_of_table) {
+		this.number_of_tables = number_of_table;
+	}
 	public float getDeposit() {
 		return deposit;
 	}

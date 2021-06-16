@@ -26,6 +26,7 @@ public class FeastConverter {
     		 result.setNameShift(entity.getshift().getName());
     		 result.setLobbyId(entity.getId_lobby().getId());
     		 result.setLobbyName(entity.getId_lobby().getName());
+    		 result.setNumberOfTables(entity.getNumber_of_table());
     		 result.setNote(entity.getNote());
     		 result.setPhone(entity.getPhone());
     		 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
@@ -44,6 +45,7 @@ public class FeastConverter {
     	result.setGroomname(dto.getGroomName());
     	result.setBridename(dto.getBrideName());
     	result.setDeposit(dto.getDeposit());
+    	result.setNumber_of_table(dto.getNumberOfTables());
     	result.setPhone(dto.getPhone());
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
     	Date  date = formatter.parse(dto.getWeddingDate());

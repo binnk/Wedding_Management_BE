@@ -12,6 +12,7 @@ public class FeastDTO {
 	private String nameShift;
 	private String  lobbyName;
 	private Long lobbyId;
+	private Long numberOfTables;
 	private Float deposit;
 	private String note;
 	private String groomName;
@@ -65,7 +66,12 @@ public class FeastDTO {
 	public void setLobbyName(String lobbyName) {
 		this.lobbyName = lobbyName;
 	}
-
+	public Long getNumberOfTables() {
+		return numberOfTables;
+	}
+	public void setNumberOfTables(Long numberOfTables) {
+		this.numberOfTables = numberOfTables;
+	}
 	public float getDeposit() {
 		return deposit;
 	}
@@ -99,6 +105,7 @@ public class FeastDTO {
 		if(this.brideName == null || "".equals(brideName)) return true;
 		if(this.groomName == null || "".equals(groomName)) return true;
 		if(this.deposit < 0 || this.deposit == null) return true;
+		if(this.numberOfTables == null || this.numberOfTables < 1) return true;
 		if(this.idShift == null ) return true;
 		if(this.note == null || "".equals(note)) return true;
 		if(this.phone == null || "".equals(phone)) return true;

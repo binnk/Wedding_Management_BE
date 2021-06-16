@@ -37,7 +37,7 @@ public class ReportDate {
 	
 	private Float ratio;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "report_month_id")
 	private ReportMonth reportMonth;
 	

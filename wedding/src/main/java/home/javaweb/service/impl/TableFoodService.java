@@ -71,12 +71,6 @@ public class TableFoodService implements ITableFoodService {
 		
 	}
 
-	@Override
-	public void deleteByFeastTable(Long feastTableId) {
-		_repository.deleteByFeastTable(feastTableId);
-		
-	}
-
 
 
 }
