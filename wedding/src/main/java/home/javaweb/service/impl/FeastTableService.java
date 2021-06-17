@@ -103,4 +103,9 @@ public class FeastTableService implements IFeastTableService {
 		
 	}
 
+	@Override
+	public Integer getTotalTable(Long feastId) {
+		return _repository.calcTotalTableByFeast(feastId);
+	}
+
 }
