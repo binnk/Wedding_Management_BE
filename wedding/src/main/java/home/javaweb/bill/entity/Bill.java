@@ -40,6 +40,9 @@ public class Bill {
 	@Column(name = "date_of_payment")
 	private LocalDate dateOfPayment;
 	
+	@Column(name = "number_of_tables")
+	private Integer numberOfTables;
+	
 	@Column(name = "total_table_price")
 	private Long totalTablePrice;
 	
@@ -158,6 +161,14 @@ public class Bill {
 
 	public void setReports(Set<ReportDate> reports) {
 		this.reports = reports;
+	}
+
+	public Integer getNumberOfTables() {
+		return numberOfTables;
+	}
+
+	public void setNumberOfTables(Integer numberOfTables) {
+		this.numberOfTables = numberOfTables;
 	}
 	
 	

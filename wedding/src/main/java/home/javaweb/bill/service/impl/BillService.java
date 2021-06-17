@@ -41,27 +41,6 @@ public class BillService implements IBillService {
 		 _repository.save(entity);		
 	}
 	
-//	public void test() {
-//		Long feastId = 1L;
-//		
-//		Long totalServicePrice = calcTotalServicePrice(feastId);
-//		Long totalTablePrice = calcTotalTablePrice(feastId);
-//		
-//		Long totalBill = totalServicePrice + totalTablePrice;
-//		
-//		//Calculate fine by day
-//		Fine fine = _fineService.findById(1L);
-//		LocalDate currentDate = LocalDate.now();
-//		FeastEntity feast = _feastService.findById(feastId);
-//		LocalDate dateOfPayment = feast.getDateOfOrganization();
-//		
-//		//Calculate currentDate - dateOfPayment
-//		Long overdueDay = ChronoUnit.DAYS.between(currentDate, currentDate);
-//		if (overdueDay < 0)
-//			overdueDay = 0L;
-//		Long totalFine = totalBill * fine.getPercent() * overdueDay / 100;
-//		System.out.println(totalFine);
-//	}
 	
 
 	@Override
@@ -74,6 +53,7 @@ public class BillService implements IBillService {
 		Long totalTablePrice = calcTotalTablePrice(feastId);
 		if(totalTablePrice == null)
 			totalTablePrice = 0L;
+		Integer numberTable = calcTotalTables(feastId);
 		
 		Long totalBill = totalServicePrice + totalTablePrice;
 		
@@ -98,6 +78,7 @@ public class BillService implements IBillService {
 		entity.setTotalBill(totalBill);
 		entity.setTotalFine(totalFine);
 		entity.setUnpaidMoney(unpaidMoney);
+		entity.setNumberOfTables(numberTable);
 
 		return entity;
 		
@@ -115,6 +96,10 @@ public class BillService implements IBillService {
 			
 		return result;
 		
+	}
+	
+	public Integer calcTotalTables(Long feastId) {
+		return _fTableService.getTotalTable(feastId);
 	}
 
 

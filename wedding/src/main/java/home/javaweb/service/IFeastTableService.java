@@ -13,6 +13,8 @@ public interface IFeastTableService {
 	
 	// Total price of FEAST
 	Long getTotalPrice(Long feastId);
+	
+	Integer getTotalTable(Long feastId);
 	void deleteByFeast(Long id);
 	
 }

@@ -23,4 +23,10 @@ public interface FeastTableRepository extends JpaRepository<FeastTable, Long>{
 	@Transactional
 	@Query(value = "DELETE FROM feast_table ft WHERE ft.feast_id = ?1", nativeQuery = true)
 	void deleteByFeast(Long id);
+
+	@Query(value = "SELECT SUM(ft.number_tables + reserve_tables) "
+			+ "FROM feast_table ft "
+			+ " WHERE ft.feast_id = ?1", 
+		nativeQuery = true)
+	Integer calcTotalTableByFeast(Long feastId);
 }
