@@ -105,16 +105,19 @@ public class Application implements CommandLineRunner {
         userRepository.save(new User(
                 "admin",
                 myBCryptPasswordEncoder.encode("0000"),
+                "c ", "c ",
                 Arrays.asList(ROLE_ADMIN)
         ));
         userRepository.save(new User(
                 "manager",
                 myBCryptPasswordEncoder.encode("0000"),
+                "c ", "c ",
                 Arrays.asList(ROLE_MANAGER)
         ));
         userRepository.save(new User(
                 "user",
                 myBCryptPasswordEncoder.encode("0000"),
+                "c ", "c ",
                 Arrays.asList(ROLE_USER)
         ));
 

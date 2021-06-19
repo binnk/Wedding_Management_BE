@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import home.javaweb.entity.Privilege;
 import home.javaweb.entity.Role;
 import home.javaweb.repository.PrivilageRepository;
 import home.javaweb.repository.RoleRepository;
 import home.javaweb.service.IPermissionService;
+
 @Service("permissionService")
 public class PermissionService implements IPermissionService {
 	
@@ -20,14 +22,20 @@ public class PermissionService implements IPermissionService {
 	@Override
 	public String removePermission(String roleName, String permission) {
 		if(roleName != "ROLE_ADMIN" && permission != "UPDATE_PER") {
-			   List<Privilege> listAuthor =	(List<Privilege>) ser_role.findByName(roleName).getPrivileges();
+			   Role role = ser_role.findByName(roleName);
+			   Privilege per = ser_permission.findByAuthority(permission); 
+			   List<Privilege> listAuthor =	role.getPrivileges();
+			   Boolean bool = false;
 			   if(listAuthor.isEmpty()) return "RoleName doesn't exist!";
 			   for (Privilege item : listAuthor) {
-				   if(item.getAuthority() == permission)
-					listAuthor.remove(item);
+				   if(item.getAuthority() == per.getAuthority())
+				   {					
+					  bool = true;
+					  break;
+				   }
 			   }
-			   Role role = ser_role.findByName(roleName);
-			   role.setPrivileges(listAuthor);
+			   if(bool)
+			   role.getPrivileges().remove(per);
 			   ser_role.save(role);
 			   return "Update successful!";
 			}
