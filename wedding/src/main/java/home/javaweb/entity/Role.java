@@ -2,6 +2,7 @@ package home.javaweb.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +18,7 @@ public class Role {
     private long id;
     private String name;
     @ManyToMany(fetch = FetchType.EAGER)
-    private Collection<Privilege> privileges = new ArrayList<>();
+    private List<Privilege> privileges = new ArrayList<>();
 
     public static Role valueOf(String role) {
         return new Role(role);
@@ -30,7 +31,7 @@ public class Role {
         this.name = name;
     }
 
-    public Role(String name, Collection<Privilege> privileges) {
+    public Role(String name, List<Privilege> privileges) {
         this.name = name;
         this.privileges = privileges;
     }
@@ -51,11 +52,11 @@ public class Role {
         this.name = name;
     }
 
-    public Collection<Privilege> getPrivileges() {
+    public List<Privilege> getPrivileges() {
         return privileges;
     }
 
-    public void setPrivileges(Collection<Privilege> privileges) {
+    public void setPrivileges(List<Privilege> privileges) {
         this.privileges = privileges;
     }
  

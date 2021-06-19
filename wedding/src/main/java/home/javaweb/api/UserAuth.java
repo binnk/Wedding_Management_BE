@@ -3,7 +3,10 @@ package home.javaweb.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +21,10 @@ import home.javaweb.config.sercurity.AuthResponse;
 import home.javaweb.config.sercurity.JwtOutils;
 import home.javaweb.config.sercurity.MyBCryptPasswordEncoder;
 import home.javaweb.entity.User;
+import home.javaweb.entity.UserRequest;
 import home.javaweb.repository.UserRepository;
 import home.javaweb.service.SecurityServices;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/user")
 public class UserAuth {
@@ -37,7 +41,8 @@ public class UserAuth {
         this.UserRepository = UserRepository;
         this.myBCryptPasswordEncoder = myBCryptPasswordEncoder;
     }
-    //view all user
+    @CrossOrigin
+    @PreAuthorize("hasAuthority('UPDATE_PER')")
     @GetMapping("/get-all") List<User> getAll () {
     	return userRepository.findAll();
     }
@@ -49,15 +54,14 @@ public class UserAuth {
         }
         return null;
     }
-    
+    @CrossOrigin
     @PutMapping("/update")
-    public User update(@RequestBody User userReq) {
-        User user = userRepository.findByUsername(userReq.getUsername());
-        if(userReq.getImage() != null) user.setImage(userReq.getImage());
-        if(userReq.getFullName() != null) user.setFullName(userReq.getFullName());
-      return  userRepository.save(user);
+    public User update(@RequestBody UserRequest userReq) {
+    	      
+      return  authSer.update(userReq);
       
     }
+    @CrossOrigin
     @PreAuthorize("hasAuthority('UPDATE_USER')") 
     @PutMapping("/change-password") User changePassword(@RequestBody AuthRequest authRequest) {
     	User user = userRepository.findByUsername(authRequest.username);
@@ -68,17 +72,37 @@ public class UserAuth {
 		return null;
     	
     }
+    @CrossOrigin
     @PreAuthorize("hasAuthority('UPDATE_USER')") 
     @PostMapping("/sign-up")
-    public AuthResponse signUp(@RequestBody User userReq) {
-        
-        authSer.createAdmin(userReq);
+    public ResponseEntity<?> signUp(@RequestBody UserRequest userReq) {
+    	
+    	
+    	User usercreate =  new User(
+    			userReq.getUsername(),
+    			userReq.getPassword(),
+    			userReq.getFullname(),
+    			userReq.getImage()
+    			);
+    	System.out.println(userReq.getRole());
+    	if(userReq.getRole().equals("ROLE_ADMIN")) {	
+    		
+    		 authSer.createAdmin(usercreate);
+    	}
+    	if(userReq.getRole().equals("ROLE_MANAGER")) {
+    		authSer.createManager(usercreate);
+    	}
+    	if(userReq.getRole().equals("ROLE_USER")) {
+    		 authSer.createUser(usercreate);
+    	}     
+      
         User  user = userRepository.findByUsername(userReq.getUsername());
         if (user != null && myBCryptPasswordEncoder.matches(userReq.getPassword(), user.getPassword())) {
-            return new AuthResponse(jwtOutils.create(user));
+            return new ResponseEntity<AuthResponse>( new AuthResponse(jwtOutils.create(user)),HttpStatus.OK);
         }
-        return null;
+        return new ResponseEntity<String>("Invalued", HttpStatus.BAD_REQUEST);
     }
+    @CrossOrigin
     @PreAuthorize("hasAuthority('UPDATE_USER')") 
     @DeleteMapping("/delete/{username}")
     public void delete(@PathVariable("username") String username) {
