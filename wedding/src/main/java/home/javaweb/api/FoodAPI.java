@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +30,12 @@ public class FoodAPI {
 
 	@Autowired
 	private IFoodCategoryService categoryService;
-
+	@PreAuthorize("hasAuthority('READ_FOOD')") 
 	@GetMapping("/food")
 	public List<FoodDTO> getListFood() {
 		return foodService.findAll();
 	}
-
+	@PreAuthorize("hasAuthority('UPDATE_FOOD')") 
 	@PostMapping("/food")
 	public FoodDTO createFood(
 				@RequestBody FoodDTO dto
@@ -43,7 +44,7 @@ public class FoodAPI {
 		dto.setCategory(categoryService.get(dto.getCategoryId()));
 		return foodService.save(dto);
 	}
-
+	@PreAuthorize("hasAuthority('UPDATE_FOOD')") 
 	@PutMapping("/food")
 	public FoodDTO updateFood(
 				@RequestBody FoodDTO dto
@@ -54,7 +55,7 @@ public class FoodAPI {
 		dto.setCategory(categoryService.get(dto.getCategoryId()));
 		return foodService.save(dto);
 	}
-
+	@PreAuthorize("hasAuthority('UPDATE_FOOD')") 
 	@DeleteMapping("/food")
 	public ResponseEntity<?> deleteFoods (
 			@RequestBody Long[] ids
