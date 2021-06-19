@@ -25,6 +25,7 @@ public class ShiftEntity {
 	@Column(name = "time_begin")
 	@Temporal(TemporalType.TIME)
 	private Date timeEnd;
+	private Boolean active;
 	public Long getId() {
 		return id;
 	}
@@ -48,6 +49,12 @@ public class ShiftEntity {
 	}
 	public void setTimeEnd(Date timeEnd) {
 		this.timeEnd = timeEnd;
+	}
+	public Boolean getActive() {
+		return active;
+	}
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 	
 }

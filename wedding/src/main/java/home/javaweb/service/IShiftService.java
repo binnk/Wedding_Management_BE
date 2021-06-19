@@ -6,4 +6,7 @@ import home.javaweb.entity.ShiftEntity;
 
 public interface IShiftService {
     List<ShiftEntity> findAll();
+    ShiftEntity create(ShiftEntity shift);
+    ShiftEntity update(ShiftEntity shift);
+    void delete (Long id);
 }
