@@ -24,8 +24,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(unique =true)
+    private Long id;
+    public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Column(unique =true)
     private String username; 
     @JsonIgnore
     private String password;
@@ -37,18 +41,22 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password,String fullname, String image) {
         this.username = username;
         this.password = password;
+        this.fullName = fullname;
+        this.image = image;
     }
 
-    public User(String username, String password, Collection<Role> roles) {
-        this.username = username;
+    public User(String username, String password,String fullname, String image, Collection<Role> roles) {
+        this.fullName = fullname;
+        this.image =image;
+    	this.username = username;
         this.password = password;
         this.roles = roles;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

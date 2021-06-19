@@ -9,6 +9,7 @@ import home.javaweb.config.sercurity.MyBCryptPasswordEncoder;
 import home.javaweb.entity.Privilege;
 import home.javaweb.entity.Role;
 import home.javaweb.entity.User;
+import home.javaweb.entity.UserRequest;
 import home.javaweb.repository.PrivilageRepository;
 import home.javaweb.repository.RoleRepository;
 import home.javaweb.repository.UserRepository;
@@ -57,7 +58,27 @@ public class SecurityServices {
         user.setPassword(myBCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
-
+    public User update(UserRequest userReq) {
+    	Role role;
+    	User user = userRepository.findByUsername(userReq.getUsername());
+        if (user == null) return null;
+        if(userReq.getImage() != null) user.setImage(userReq.getImage());
+        if(userReq.getFullname() != null) user.setFullName(userReq.getFullname());
+        if(userReq.getPassword() != null) user.setPassword(myBCryptPasswordEncoder.encode(userReq.getPassword()));
+        if(userReq.getRole() =="ROLE_ADMIN" ) {
+        	user.getRoles().clear();
+        	user.getRoles().add(roleRepository.findByName("ROLE_ADMIN"));
+        }
+        if(userReq.getRole() =="ROLE_MANAGER" ) {
+        	user.getRoles().clear();
+        	user.getRoles().add(roleRepository.findByName("ROLE_MANAGER"));
+        }
+        if(userReq.getRole() =="ROLE_ADMIN" ) {
+        	user.getRoles().clear();
+        	user.getRoles().add(roleRepository.findByName("ROLE_MANAGER"));
+        }
+        return userRepository.save(user);
+    }
     public void deleteAll() {
         userRepository.deleteAll();
     }

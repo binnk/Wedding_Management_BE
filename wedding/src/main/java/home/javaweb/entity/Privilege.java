@@ -11,7 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 public class Privilege implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String authority;
     private String description;
     public String getDescription() {
@@ -36,11 +36,11 @@ public class Privilege implements GrantedAuthority {
         this.authority = authority;
         this.id = id;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

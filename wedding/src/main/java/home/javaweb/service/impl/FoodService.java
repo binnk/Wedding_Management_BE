@@ -27,8 +27,10 @@ public class FoodService implements IFoodService {
 		List<Food> foods = foodRepo.findAll();
 		
 		for(Food food : foods) {
+			if (food.getActive()) {
 			FoodDTO foodDTO = foodConverter.toDTO(food);
 			result.add(foodDTO);
+			}
 		}
 		return result;
 	}
@@ -53,8 +55,14 @@ public class FoodService implements IFoodService {
 	@Override
 	public void deleteById(Long[] ids) {
 		// TODO Auto-generated method stub
-		for(Long id : ids)
-			foodRepo.deleteById(id);
+		Food food = null;
+		for(Long id : ids) {
+			food = foodRepo.getOne(id);
+			if(food != null) 
+			food.setActive(false);
+			foodRepo.save(food);
+		}
+		
 	}
 	
 }

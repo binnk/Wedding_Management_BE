@@ -34,7 +34,7 @@ public class Food {
 	
 	@Column(name = "more_info")
 	private String moreInfo;
-
+    private Boolean active;
 	
 	@ManyToOne
 	@JoinColumn(name = "food_category_id")
@@ -102,6 +102,14 @@ public class Food {
 
 	public void setFeastTables(List<TableFood> feastTables) {
 		this.feastTables = feastTables;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 

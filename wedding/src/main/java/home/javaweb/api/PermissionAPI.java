@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import home.javaweb.entity.Role;
 import home.javaweb.repository.RoleRepository;
 import home.javaweb.service.IPermissionService;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -23,6 +24,7 @@ public class PermissionAPI {
 	private IPermissionService permission_ser;
 	@Autowired
     private RoleRepository roleRepository;
+	@CrossOrigin
 	@PutMapping("/permission/add")
 	@PreAuthorize("hasAuthority('UPDATE_PER')")
 	public ResponseEntity<?> addPermission(@RequestParam String rolename, @RequestParam String permission){
@@ -34,6 +36,7 @@ public class PermissionAPI {
 		else 
 			return new ResponseEntity<String>(result,HttpStatus.NO_CONTENT);
 	}
+	@CrossOrigin
 	@PutMapping("/permission/remove")
 	@PreAuthorize("hasAuthority('UPDATE_PER')")
 	public ResponseEntity<?> removePermission(@RequestParam String rolename, @RequestParam String permission){
@@ -48,6 +51,7 @@ public class PermissionAPI {
 	@GetMapping("/permission/{rolename}")
 	@PreAuthorize("hasAuthority('UPDATE_PER')")
 	public ResponseEntity<?> viewPermissionUser(@PathVariable("rolename") String rolename) {
+		rolename = rolename.toUpperCase();
 		Role role = roleRepository.findByName(rolename);
 		return new ResponseEntity<Role>(role,HttpStatus.OK);
 	}

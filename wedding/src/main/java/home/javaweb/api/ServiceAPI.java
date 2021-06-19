@@ -24,7 +24,7 @@ public class ServiceAPI {
 	
 	@Autowired
 	private IServiceService _service;
-	@PreAuthorize("hasAuthority('VIEW_SERVICE')") 
+	@PreAuthorize("hasAuthority('READ_SERVICE')") 
 	@GetMapping("/service")
 	public List<ServiceDTO> getAllServices(){
 		return _service.findAll();

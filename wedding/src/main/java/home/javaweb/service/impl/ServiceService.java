@@ -28,9 +28,10 @@ public class ServiceService implements IServiceService {
 		
 		List<Service> services = _repo.findAll();
 		
-		for(Service service : services)
+		for(Service service : services) {
+			if(service.getActive())
 			result.add(_converter.toDTO(service));
-			
+		}
 		return result;
 	}
 
@@ -45,9 +46,13 @@ public class ServiceService implements IServiceService {
 
 	@Override
 	public void deleteById(Long[] ids) {
-		
-		for(Long id : ids)
-			_repo.deleteById(id);		
+		Service service = null;
+		for(Long id : ids) {
+			service = _repo.getOne(id);
+			if(service != null) service.setActive(false);
+			_repo.save(service);
+		}
+			
 	}
 
 	@Override

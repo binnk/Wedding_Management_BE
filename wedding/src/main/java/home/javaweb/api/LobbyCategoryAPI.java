@@ -25,7 +25,7 @@ import home.javaweb.service.impl.LobbyCategoryService;
 public class LobbyCategoryAPI {
    @Autowired
    LobbyCategoryService lobbyCateSer;
-   @PreAuthorize("hasAuthority('VIEW_LOBBYCATEGORY')") 
+   @PreAuthorize("hasAuthority('READ_LOBBYCATEGORY')") 
    @GetMapping("/lobbycategory")
    public ResponseEntity<Object> getAll() {
 	   List<LobbyCategoryEntity> list = lobbyCateSer.findAll();

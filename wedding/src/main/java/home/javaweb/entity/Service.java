@@ -34,6 +34,7 @@ public class Service {
 	@Column(name = "more_info")
 	private String moreInfo;
 	
+	private Boolean active;
 	@OneToMany(mappedBy = "service")
 	@JsonIgnore
 	private List<FeastService> services = new ArrayList<FeastService>();
@@ -86,6 +87,14 @@ public class Service {
 
 	public void setServices(List<FeastService> services) {
 		this.services = services;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 	
 	
