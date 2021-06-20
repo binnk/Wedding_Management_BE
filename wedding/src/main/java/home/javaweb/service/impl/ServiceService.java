@@ -38,7 +38,7 @@ public class ServiceService implements IServiceService {
 	@Override
 	public ServiceDTO save(ServiceDTO dto) {
 		Service service = _converter.toEntity(dto);
-		
+		 service.setActive(true);
 		_repo.save(service);
 		
 		return _converter.toDTO(service);
