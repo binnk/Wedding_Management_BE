@@ -50,7 +50,7 @@ public class UserAuth {
     public AuthResponse signIn(@RequestBody AuthRequest authRequest) {
         User user = userRepository.findByUsername(authRequest.username);
         if (user != null && myBCryptPasswordEncoder.matches(authRequest.password, user.getPassword())) {
-            return new AuthResponse(jwtOutils.create(user));
+            return new AuthResponse(jwtOutils.create(user),user.getUsername(),user.getFullName(),user.getImage());
         }
         return null;
     }
@@ -98,7 +98,7 @@ public class UserAuth {
       
         User  user = userRepository.findByUsername(userReq.getUsername());
         if (user != null && myBCryptPasswordEncoder.matches(userReq.getPassword(), user.getPassword())) {
-            return new ResponseEntity<AuthResponse>( new AuthResponse(jwtOutils.create(user)),HttpStatus.OK);
+            return new ResponseEntity<AuthResponse>( new AuthResponse(jwtOutils.create(user),user.getUsername(),user.getFullName(),user.getImage()),HttpStatus.OK);
         }
         return new ResponseEntity<String>("Invalued", HttpStatus.BAD_REQUEST);
     }
