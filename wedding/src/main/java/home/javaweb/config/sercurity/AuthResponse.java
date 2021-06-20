@@ -38,8 +38,12 @@ public class AuthResponse implements Serializable {
         this.fullname = fullname;
         this.image = image;
     }
-
+    public AuthResponse(String token) {
+    	this.token = token;
+    }
+    
     public String getToken() {
+    
         return token;
     }
 
