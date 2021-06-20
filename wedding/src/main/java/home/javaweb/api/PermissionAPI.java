@@ -15,7 +15,7 @@ import home.javaweb.entity.Role;
 import home.javaweb.repository.RoleRepository;
 import home.javaweb.service.IPermissionService;
 
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api")
 public class PermissionAPI {
