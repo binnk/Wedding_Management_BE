@@ -39,6 +39,7 @@ public class FoodService implements IFoodService {
 	public FoodDTO save(FoodDTO dto) {
 		
 		Food food = foodConverter.toEntity(dto);
+		food.setActive(true);
 		foodRepo.save(food);
 		
 		FoodDTO result = foodConverter.toDTO(food);
@@ -49,7 +50,9 @@ public class FoodService implements IFoodService {
 	@Override
 	public FoodDTO findById(Long id) {
 		Food food = foodRepo.findById(id).get();	
+		if(food.getActive())
 		return foodConverter.toDTO(food);
+		return null;
 	}
 
 	@Override
