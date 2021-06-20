@@ -48,8 +48,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and()
-                .csrf().disable()
+            
+	    http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+            http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/user/sign-in").permitAll()
                 .antMatchers(AUTH_WHITELIST).permitAll()
@@ -68,7 +69,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-        corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("*", "http://localhost:3000", "https://wedding-management-app.herokuapp.com"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
