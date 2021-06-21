@@ -100,7 +100,6 @@ public class FeastDTO {
 		if(this.groomName == null || "".equals(groomName)) return true;
 		if(this.deposit < 0 || this.deposit == null) return true;
 		if(this.idShift == null ) return true;
-		if(this.note == null || "".equals(note)) return true;
 		if(this.phone == null || "".equals(phone)) return true;
 		if(this.weddingDate == null || "".equals(weddingDate)) return true;
 		if(this.lobbyId == null || this.lobbyId < 1) return true;
