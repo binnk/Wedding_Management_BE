@@ -1,5 +1,6 @@
 package home.javaweb.repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +12,7 @@ import home.javaweb.entity.LobbyEntity;
 import home.javaweb.entity.ShiftEntity;
 
 public interface FeastRepository extends JpaRepository<FeastEntity, Long> {
-//	@Query(" SELECT f from  FEAST f  where f.wedding_date = ?1 AND f.shift_id = ?2  AND f.lobby_id = ?3")
-//         List<FeastEntity> checkExist(Date date, Long shift, Long lobby); 
-//        	 
-//         
+	
+	FeastEntity findByShift_IdAndLobby_IdAndDateOfOrganization (Long id_shift, Long id_lobby, LocalDate date);
+         
 }

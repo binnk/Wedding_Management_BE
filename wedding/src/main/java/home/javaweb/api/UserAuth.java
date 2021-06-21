@@ -1,6 +1,7 @@
 package home.javaweb.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +21,10 @@ import home.javaweb.config.sercurity.AuthRequest;
 import home.javaweb.config.sercurity.AuthResponse;
 import home.javaweb.config.sercurity.JwtOutils;
 import home.javaweb.config.sercurity.MyBCryptPasswordEncoder;
+import home.javaweb.entity.Role;
 import home.javaweb.entity.User;
 import home.javaweb.entity.UserRequest;
+import home.javaweb.repository.RoleRepository;
 import home.javaweb.repository.UserRepository;
 import home.javaweb.service.SecurityServices;
 @CrossOrigin
@@ -35,7 +38,8 @@ public class UserAuth {
     private home.javaweb.repository.UserRepository userRepository;
     @Autowired
     private JwtOutils jwtOutils;
-    @Autowired SecurityServices authSer;
+    @Autowired 
+    private SecurityServices authSer;
     public UserAuth(UserRepository UserRepository,
                           MyBCryptPasswordEncoder myBCryptPasswordEncoder) {
         this.UserRepository = UserRepository;
@@ -49,8 +53,18 @@ public class UserAuth {
     @PostMapping("/sign-in")
     public AuthResponse signIn(@RequestBody AuthRequest authRequest) {
         User user = userRepository.findByUsername(authRequest.username);
+        
+        
+        
         if (user != null && myBCryptPasswordEncoder.matches(authRequest.password, user.getPassword())) {
-            return new AuthResponse(jwtOutils.create(user),user.getUsername(),user.getFullName(),user.getImage(),user.getRoles().iterator().next().getName());
+            return new AuthResponse(
+            		jwtOutils.create(user)
+            		,user.getUsername()
+            		,user.getFullName()
+            		,user.getImage()
+            		,user.getRoles().iterator().next().getName()
+            		,user.getRoles().iterator().next().getPrivileges()
+            		);
         }
         return null;
     }
@@ -98,7 +112,15 @@ public class UserAuth {
       
         User  user = userRepository.findByUsername(userReq.getUsername());
         if (user != null && myBCryptPasswordEncoder.matches(userReq.getPassword(), user.getPassword())) {
-            return new ResponseEntity<AuthResponse>( new AuthResponse(jwtOutils.create(user),user.getUsername(),user.getFullName(),user.getImage(),user.getRoles().iterator().next().getName()),HttpStatus.OK);
+            return new ResponseEntity<AuthResponse>(
+            		new AuthResponse(
+            				jwtOutils.create(user)
+            				,user.getUsername()
+            				,user.getFullName()
+            				,user.getImage()
+            				,user.getRoles().iterator().next().getName()
+            				,user.getRoles().iterator().next().getPrivileges()
+            				),HttpStatus.OK);
         }
         return new ResponseEntity<String>("Invalued", HttpStatus.BAD_REQUEST);
     }

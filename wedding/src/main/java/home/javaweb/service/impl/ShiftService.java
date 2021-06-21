@@ -25,12 +25,14 @@ public List<ShiftEntity> findAll() {
 @Override
 public ShiftEntity create(ShiftEntity shift) {
 	// TODO Auto-generated method stub
+	shift.setActive(true);
 	return shiftRepo.save(shift);
 }
 
 @Override
 public ShiftEntity update(ShiftEntity shift) {
 	// TODO Auto-generated method stub
+	shift.setActive(true);
 	return shiftRepo.save(shift);
 }
 

@@ -62,20 +62,20 @@ public class SecurityServices {
     	Role role;
     	User user = userRepository.findByUsername(userReq.getUsername());
         if (user == null) return null;
-        if(userReq.getImage() != null) user.setImage(userReq.getImage());
+        if(userReq.getImage() != null ) user.setImage(userReq.getImage());
         if(userReq.getFullname() != null) user.setFullName(userReq.getFullname());
         if(userReq.getPassword() != null) user.setPassword(myBCryptPasswordEncoder.encode(userReq.getPassword()));
-        if(userReq.getRole() =="ROLE_ADMIN" ) {
+        if(userReq.getRole().equals("ROLE_ADMIN")) {
         	user.getRoles().clear();
         	user.getRoles().add(roleRepository.findByName("ROLE_ADMIN"));
         }
-        if(userReq.getRole() =="ROLE_MANAGER" ) {
+        if(userReq.getRole().equals("ROLE_MANAGER")) {
         	user.getRoles().clear();
         	user.getRoles().add(roleRepository.findByName("ROLE_MANAGER"));
         }
-        if(userReq.getRole() =="ROLE_ADMIN" ) {
+        if(userReq.getRole().equals("ROLE_USER")) {
         	user.getRoles().clear();
-        	user.getRoles().add(roleRepository.findByName("ROLE_MANAGER"));
+        	user.getRoles().add(roleRepository.findByName("ROLE_USER"));
         }
         return userRepository.save(user);
     }

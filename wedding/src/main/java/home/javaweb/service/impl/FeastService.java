@@ -1,5 +1,7 @@
 package home.javaweb.service.impl;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -123,5 +125,22 @@ public class FeastService implements IFeastService {
 		
 		feastRepo.deleteById(id);
 		
+	}
+
+	@Override
+	public Boolean checkExist(FeastDTO feast) {
+		
+		FeastEntity entity = null;
+		try {
+			
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+		    	LocalDate dateOgnz = LocalDate.parse(feast.getDateOfOrganization(), dtf);
+				entity  = feastRepo.findByShift_IdAndLobby_IdAndDateOfOrganization(feast.getIdShift(), feast.getLobbyId(), dateOgnz);
+				if(entity != null) return true;
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+		}
+		return false;
 	}
 }

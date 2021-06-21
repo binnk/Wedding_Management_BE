@@ -13,4 +13,5 @@ public interface IFeastService {
      FeastEntity findById(Long id);
      void delete(Long id);
 	void deleteById(Long id);
+	Boolean checkExist(FeastDTO feast);
 }

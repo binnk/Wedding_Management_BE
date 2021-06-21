@@ -73,25 +73,10 @@ public class FeastAPI {
 	public void deleteFeast (@PathVariable("id") Long id ) {
 		 feastser.deleteById(id);
 	}
-//    @PreAuthorize("hasAuthority('UPDATE_FEAST')") 
-//    @PutMapping("/feast/check-exist")
-//    public Boolean isExist(@RequestBody FeastDTO feast) {
-// 
-//    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
-//    	Date date = null;
-//		try {
-//			date = formatter.parse(feast.getDateOfOrganization());
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    	if(lobbyRepo.getOne(feast.getLobbyId()) != null && shiftRepo.getOne(feast.getIdShift()) != null && date != null) {
-//    		//if(!feastRepo.checkExist(date, shiftRepo.getOne(feast.getIdShift()), lobbyRepo.getOne(feast.getLobbyId())).isEmpty())
-//                return true;
-//    	}
-//    		
-//		return false;
-//    	
-//    }
+    @PreAuthorize("hasAuthority('UPDATE_FEAST')") 
+    @PutMapping("/feast/check-exist")
+    public Boolean isExist(@RequestBody FeastDTO feast) {
+            return feastser.checkExist(feast);
+    }
 
 }
