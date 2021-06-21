@@ -46,7 +46,7 @@ public class UserAuth {
         this.myBCryptPasswordEncoder = myBCryptPasswordEncoder;
     }
     @CrossOrigin
-    @PreAuthorize("hasAuthority('UPDATE_PER')")
+    @PreAuthorize("hasAuthority('READ_USER')")
     @GetMapping("/get-all") List<User> getAll () {
     	return userRepository.findAll();
     }
