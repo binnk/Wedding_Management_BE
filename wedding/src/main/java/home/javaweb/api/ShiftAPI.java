@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import home.javaweb.dto.LobbyDTO;
+import home.javaweb.dto.ShiftDTO;
 import home.javaweb.entity.LobbyEntity;
 import home.javaweb.entity.ShiftEntity;
 import home.javaweb.service.IShiftService;
@@ -33,7 +34,7 @@ public class ShiftAPI {
 	}
   @PreAuthorize("hasAuthority('UPDATE_SHIFT')") 
   @PostMapping("/shift")
-  public ResponseEntity<ShiftEntity> create(@RequestBody ShiftEntity lobby) {
+  public ResponseEntity<ShiftEntity> create(@RequestBody ShiftDTO lobby) {
 	    ShiftEntity result = shiftSer.create(lobby);
 	   if(result == null)
 		   return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -41,7 +42,7 @@ public class ShiftAPI {
   }
   @PreAuthorize("hasAuthority('UPDATE_SHIFT')") 
   @PutMapping("/shift")
-  public ResponseEntity<ShiftEntity> update(@RequestBody ShiftEntity lobby) {
+  public ResponseEntity<ShiftEntity> update(@RequestBody ShiftDTO lobby) {
 	  ShiftEntity result = shiftSer.update(lobby);
 	   if(result == null)
 		   return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
