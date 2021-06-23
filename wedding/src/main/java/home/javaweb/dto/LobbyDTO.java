@@ -4,6 +4,7 @@ public class LobbyDTO {
 	private String name;
 	private String LobbyCategory;
 	private Long idLobbyCategory;	
+	private  int minTableCategory;
 	private String image;
 	private int maxTable;
 	
@@ -44,6 +45,10 @@ public class LobbyDTO {
 		this.maxTable = maxTable;
 		return this;
 	}
+	public LobbyDTO minTableCategory(int min) {
+		this.minTableCategory = min;
+		return this;
+	}
 	public LobbyDTO minUnitPriceTable(Long minUnitPriceTable) {
 		this.minUnitPriceTable = minUnitPriceTable;
 		return this;
@@ -77,6 +82,12 @@ public class LobbyDTO {
 	}
 	public void setMaxtable(int maxtable) {
 		this.maxTable = maxtable;
+	}
+	public int getMinTableCategory() {
+		return minTableCategory;
+	}
+	public void setMinTableCategory(int minTableCategory) {
+		this.minTableCategory = minTableCategory;
 	}
 	
 }
