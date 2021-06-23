@@ -32,8 +32,10 @@ public class LobbyService  implements ILobbyService{
 	@Override
 	public LobbyDTO getOne(Long id) {
 		LobbyDTO result =  new LobbyDTO();
+
 		LobbyEntity lobby;
 		lobby = lobbyRepo.findById(id).get();
+
 		// TODO Auto-generated method stub
 		if(lobby != null && lobby.getActive() == true)
 		{
@@ -41,6 +43,7 @@ public class LobbyService  implements ILobbyService{
 			.id(lobby.getId())
 			.name(lobby.getName())
 			.image(lobby.getImage())
+			.idLobbyCategory(lobby.getLobbyCategory().getId())
 			.maxTable(lobby.getMaxTable())
 			.idLobbyCategory(lobby.getLobbyCategory().getId())
 			.LobbyCategory(lobby.getLobbyCategory().getName())
