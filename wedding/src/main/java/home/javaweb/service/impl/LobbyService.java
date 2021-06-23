@@ -32,7 +32,7 @@ public class LobbyService  implements ILobbyService{
 	@Override
 	public LobbyDTO getOne(Long id) {
 		LobbyDTO result =  new LobbyDTO();
-		Optional<LobbyEntity> lobby = lobbyRepo.findById(id);
+		LobbyEntity lobby = lobbyRepo.findById(id).get();
 		// TODO Auto-generated method stub
 		if(lobby != null && lobby.getActive() == true)
 		{
