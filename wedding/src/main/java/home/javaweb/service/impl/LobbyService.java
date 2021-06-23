@@ -40,6 +40,7 @@ public class LobbyService  implements ILobbyService{
 			.id(lobby.getId())
 			.name(lobby.getName())
 			.image(lobby.getImage())
+			.idLobbyCategory(lobby.getLobbyCategory().getId())
 			.maxTable(lobby.getMaxTable())
 			.LobbyCategory(lobby.getLobbyCategory().getName())
 			.minUnitPriceTable(lobby.getMinUnitPriceTable());
