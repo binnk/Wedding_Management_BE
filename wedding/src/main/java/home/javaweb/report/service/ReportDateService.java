@@ -83,6 +83,11 @@ public class ReportDateService implements IReportDateService	 {
 		return _repository.findAllBillByDate(date);
 	}
 
+	@Override
+	public List<ReportDate> findByMonthAndYear(int month, int year) {
+		return _repository.findByMonthAndYear(month, year);
+	}
+
 
 
 }

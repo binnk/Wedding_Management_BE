@@ -30,7 +30,13 @@ public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 			+ "FROM ReportDate rd "
 			+ "WHERE MONTH(rd.date) = ?1")
 	List<ReportDate> findByMonth(int month);
-
+	
+	@Query(value = "SELECT rd "
+			+ "FROM ReportDate rd "
+			+ "WHERE MONTH(rd.date) = ?1 AND YEAR(rd.date) = ?2 ")
+	List<ReportDate> findByMonthAndYear(int month, int year); 
+	
 	List<ReportDate> findAllBillByDate(LocalDate date);
+
 
 }
