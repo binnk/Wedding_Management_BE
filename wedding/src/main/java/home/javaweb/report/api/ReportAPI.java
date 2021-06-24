@@ -53,5 +53,17 @@ public class ReportAPI {
 		
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
+	@GetMapping("/month/{month}/year/{year}")
+	public ResponseEntity<Object> findByMonthAndYear(
+						@PathVariable("month") int month,
+						@PathVariable("year") int year
+			){
+		List<ReportDate> reports = reportDate.findByMonthAndYear(month, year);
+		if(reports.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+	}
+	
 	
 }

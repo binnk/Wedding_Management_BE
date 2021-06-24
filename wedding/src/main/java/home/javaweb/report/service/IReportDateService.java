@@ -14,4 +14,6 @@ public interface IReportDateService {
 	List<ReportDate> findByMonth(int month);
 
 	List<ReportDate> findAllBillByDate(LocalDate date);
+
+	List<ReportDate> findByMonthAndYear(int month, int year);
 }
