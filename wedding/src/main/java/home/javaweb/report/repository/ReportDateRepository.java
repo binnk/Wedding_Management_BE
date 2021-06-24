@@ -48,14 +48,14 @@ public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 
 	@Query(value = "SELECT lob.name as lobbyName, COUNT(f.lobby_id) as count "
 			+ "FROM bill b join feast f on b.feast_id = f.id join lobby lob on f.lobby_id = lob.id "
-			+ "WHERE Year(b.date_of_payment) = ?2 AND MONTH(b.date_of_payment) = ?1 "
+			+ "WHERE date_part('year',b.date_of_payment) = ?2 AND date_part('month',b.date_of_payment) = ?1 "
 			+ "GROUP BY lob.name "
 			+ "ORDER BY COUNT(f.lobby_id) DESC ", nativeQuery = true)
 	List<CountLobbyDTO> selectCountLobby(int month, int year);
 
 	@Query(value = "SELECT s.name as serviceName, SUM(fs.count) as count "
 			+ "FROM bill b join feast f on b.feast_id = f.id join feast_service fs on f.id = fs.feast_id join service s on fs.service_id = s.id "
-			+ "WHERE Year(b.date_of_payment) = ?2 AND MONTH(b.date_of_payment) = ?1 "
+			+ "WHERE date_part('year',b.date_of_payment) = ?2 AND date_part('month',b.date_of_payment) = ?1 "
 			+ "GROUP BY s.name "
 			+ "ORDER BY SUM(fs.count) DESC ",nativeQuery = true)
 	List<CountServiceDTO> selectCountService(int month, int year);
@@ -64,7 +64,7 @@ public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 			+ "FROM bill b JOIN feast f ON b.feast_id = f.id JOIN feast_table ft ON f.id = ft.feast_id "
 			+ "	 JOIN table_food tf ON ft.id = tf.feast_table_id JOIN food ON food.id = tf.food_id "
 			+ "     JOIN food_category fc ON fc.id = food.food_category_id "
-			+ "WHERE YEAR(b.date_of_payment) = ?2 AND MONTH(b.date_of_payment) =?1 "
+			+ "WHERE date_part('year',b.date_of_payment) = ?2 AND date_part('month',b.date_of_payment) = ?1 "
 			+ "GROUP BY fc.name, food.name "
 			+ "ORDER BY SUM(tf.count)" , nativeQuery = true)
 	List<CountFoodDTO> selectCountFood(int month, int year);
