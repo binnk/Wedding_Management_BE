@@ -5,9 +5,13 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+import home.javaweb.report.dto.CountLobbyDTO;
+import home.javaweb.report.dto.CountServiceDTO;
 import home.javaweb.report.entity.ReportDate;
 
+@Repository
 public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 
 
@@ -36,7 +40,23 @@ public interface ReportDateRepository extends JpaRepository<ReportDate, Long> {
 			+ "WHERE MONTH(rd.date) = ?1 AND YEAR(rd.date) = ?2 ")
 	List<ReportDate> findByMonthAndYear(int month, int year); 
 	
+	@Query(value = "SELECT rd "
+			+ "FROM ReportDate rd "
+			+ "WHERE MONTH(rd.date) = ?1 AND YEAR(rd.date) = ?2 ")
 	List<ReportDate> findAllBillByDate(LocalDate date);
+
+	@Query(value = "SELECT lob.name as lobbyName, SUM as count "
+			+ "FROM bill b join feast f on b.feast_id = f.id join lobby lob on f.lobby_id = lob.id "
+			+ "WHERE Year(b.date_of_payment) = ?2 AND MONTH(b.date_of_payment) = ?1 "
+			+ "GROUP BY lob.name "
+			+ "ORDER BY COUNT(f.lobby_id) DESC ", nativeQuery = true)
+	List<CountLobbyDTO> selectCountLobby(int month, int year);
+
+	@Query(value = "SELECT s.name as serviceName, SUM(fs.count) as count "
+			+ "FROM bill b join feast f on b.feast_id = f.id join feast_service fs on f.id = fs.feast_id join service s on fs.service_id = s.id "
+			+ "GROUP BY s.name "
+			+ "ORDER BY SUM(fs.count) DESC ",nativeQuery = true)
+	List<CountServiceDTO> selectCountService(int month, int year);
 
 
 }

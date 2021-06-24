@@ -1,15 +1,19 @@
 package home.javaweb.report.service;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import home.javaweb.bill.entity.Bill;
+import home.javaweb.report.dto.CountLobbyDTO;
+import home.javaweb.report.dto.CountServiceDTO;
 import home.javaweb.report.entity.ReportDate;
 import home.javaweb.report.entity.ReportMonth;
 import home.javaweb.report.repository.ReportDateRepository;
+import home.javaweb.repository.LobbyRepository;
 
 @Service
 public class ReportDateService implements IReportDateService	 {
@@ -19,7 +23,7 @@ public class ReportDateService implements IReportDateService	 {
 	
 	@Autowired
 	private IReportMonthService reportMonthService;
-
+	
 	@Override
 	public ReportDate save(Bill bill) {
 		/*	Kiểm tra ngày của báo cáo đã tồn tại hay chưa??	*/
@@ -84,6 +88,16 @@ public class ReportDateService implements IReportDateService	 {
 	@Override
 	public List<ReportDate> findByMonthAndYear(int month, int year) {
 		return _repository.findByMonthAndYear(month, year);
+	}
+
+	@Override
+	public List<CountLobbyDTO> selectCountLobby(int month, int year) {	
+		return _repository.selectCountLobby(month, year);
+	}
+
+	@Override
+	public List<CountServiceDTO> selectCountService(int month, int year) {
+		return _repository.selectCountService(month, year);
 	}
 
 
