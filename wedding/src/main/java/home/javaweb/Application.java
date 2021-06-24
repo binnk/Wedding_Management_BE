@@ -105,19 +105,19 @@ public class Application implements CommandLineRunner {
         userRepository.save(new User(
                 "admin",
                 myBCryptPasswordEncoder.encode("0000"),
-                "c ", "c ",
+                "Minn Nghi", "https://res.cloudinary.com/huong/image/upload/v1624291561/user_image/144395347_3880732475324427_3204797492735464393_n_usfgdf.jpg?fbclid=IwAR3Nkq5laTA2InL0Xqqm3meIYHHe7u-RLFZlY1v0XijY9nqgBlD3vAKRd-I",
                 Arrays.asList(ROLE_ADMIN)
         ));
         userRepository.save(new User(
                 "manager",
                 myBCryptPasswordEncoder.encode("0000"),
-                "c ", "c ",
+                "Vũ", "https://res.cloudinary.com/huong/image/upload/v1624236464/user_image/131326991_237371631084463_7828732453456712998_n_xuiewg.jpg?fbclid=IwAR3AxbH4at7xSJh6H_ezzk-yiycQNs_5LMt70GzbXOyDR16DafrATmTidgU",
                 Arrays.asList(ROLE_MANAGER)
         ));
         userRepository.save(new User(
                 "user",
                 myBCryptPasswordEncoder.encode("0000"),
-                "c ", "c ",
+                "Đen", "https://res.cloudinary.com/huong/image/upload/v1624236843/user_image/186472614_318126249670839_5974620561626302287_n_uakdth.jpg?fbclid=IwAR1KJ-KEjV_syrxY1MsEpDFkcw7VGSGX_qmHjIsfsjFThlSPB7nzXFz7xSI",
                 Arrays.asList(ROLE_USER)
         ));
 
