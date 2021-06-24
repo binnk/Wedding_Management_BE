@@ -52,6 +52,13 @@ public class ReportDateService implements IReportDateService	 {
 		// Update new info report month
 		ReportMonth updatedReportMonth = reportMonthService.save(result);
 		result.setRatio(revenueDay.floatValue() / reportMonth.getRevenue());
+		
+		List<ReportDate> reportsDate = _repository.findByMonthAndYear(month, year);
+		for (ReportDate report : reportsDate) {
+			report.setRatio(report.getRevenue().floatValue() / reportMonth.getRevenue());
+			_repository.save(report);
+		}
+			
 			
 		return _repository.save(result);
 	}
