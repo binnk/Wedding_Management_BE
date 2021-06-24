@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.javaweb.report.dto.CountFoodDTO;
 import home.javaweb.report.dto.CountLobbyDTO;
 import home.javaweb.report.dto.CountServiceDTO;
 import home.javaweb.report.entity.ReportDate;
@@ -86,6 +87,18 @@ public class ReportAPI {
 						@PathVariable("year") int year
 			){
 		List<CountServiceDTO> reports = reportDate.selectCountService(month, year);
+		if(reports.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+	}
+	
+	@GetMapping("food/month/{month}/year/{year}")
+	public ResponseEntity<Object> selectCountFood(
+						@PathVariable("month") int month,
+						@PathVariable("year") int year
+			){
+		List<CountFoodDTO> reports = reportDate.selectCountFood(month, year);
 		if(reports.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import home.javaweb.bill.entity.Bill;
+import home.javaweb.report.dto.CountFoodDTO;
 import home.javaweb.report.dto.CountLobbyDTO;
 import home.javaweb.report.dto.CountServiceDTO;
 import home.javaweb.report.entity.ReportDate;
@@ -107,6 +108,11 @@ public class ReportDateService implements IReportDateService	 {
 	@Override
 	public List<CountServiceDTO> selectCountService(int month, int year) {
 		return _repository.selectCountService(month, year);
+	}
+
+	@Override
+	public List<CountFoodDTO> selectCountFood(int month, int year) {
+		return _repository.selectCountFood(month, year);
 	}
 
 
