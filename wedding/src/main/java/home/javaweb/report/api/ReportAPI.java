@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.javaweb.report.dto.CountLobbyDTO;
+import home.javaweb.report.dto.CountServiceDTO;
 import home.javaweb.report.entity.ReportDate;
 import home.javaweb.report.service.IReportDateService;
 
@@ -48,6 +50,42 @@ public class ReportAPI {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     	LocalDate localDate = LocalDate.parse(date, dtf);
 		List<ReportDate> reports = reportDate.findAllBillByDate(localDate);
+		if(reports.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+	}
+	
+	@GetMapping("/month/{month}/year/{year}")
+	public ResponseEntity<Object> findByMonthAndYear(
+						@PathVariable("month") int month,
+						@PathVariable("year") int year
+			){
+		List<ReportDate> reports = reportDate.findByMonthAndYear(month, year);
+		if(reports.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+	}
+	
+	@GetMapping("lobby/month/{month}/year/{year}")
+	public ResponseEntity<Object> selectCountLobby(
+						@PathVariable("month") int month,
+						@PathVariable("year") int year
+			){
+		List<CountLobbyDTO> reports = reportDate.selectCountLobby(month, year);
+		if(reports.isEmpty())
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		return new ResponseEntity<Object>(reports, HttpStatus.OK);
+	}
+	
+	@GetMapping("service/month/{month}/year/{year}")
+	public ResponseEntity<Object> selectCountService(
+						@PathVariable("month") int month,
+						@PathVariable("year") int year
+			){
+		List<CountServiceDTO> reports = reportDate.selectCountService(month, year);
 		if(reports.isEmpty())
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		

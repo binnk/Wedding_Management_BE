@@ -6,6 +6,6 @@ import home.javaweb.entity.LobbyEntity;
 
 
 public interface LobbyRepository extends JpaRepository<LobbyEntity, Long> {
-		
+
 	
 }
