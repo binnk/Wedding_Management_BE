@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,12 +55,14 @@ public class FineAPI {
 		return new ResponseEntity<Object>(savedFine, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('UPDATE_FINE')") 
 	@PutMapping("/fines")
 	public ResponseEntity<Object> update(@RequestBody Fine fine){
 		Fine savedFine = _service.save(fine);
 		return new ResponseEntity<Object>(savedFine, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('UPDATE_FINE')") 
 	@DeleteMapping("/fines")
 	public void delete(@RequestBody Long[] ids){
 		_service.deleteById(ids);

@@ -54,6 +54,18 @@ public class Application implements CommandLineRunner {
         Privilege UPDATE_LOBBYCATEGORY = privilageRepository.save(new Privilege("UPDATE_LOBBYCATEGORY", "Thêm sửa xóa loại sảnh"));
         Privilege READ_SERVICE = privilageRepository.save(new Privilege("READ_SERVICE", "Xem danh sách dịch vụ"));
         Privilege UPDATE_SERVICE = privilageRepository.save(new Privilege("UPDATE_SERVICE", "Thêm sửa xóa dịch vụ"));
+        
+        /* BILL */
+        Privilege READ_BILL =  privilageRepository.save(new Privilege("READ_BILL", "Xem danh sách hoá đơn"));
+        Privilege UPDATE_BILL =  privilageRepository.save(new Privilege("UPDATE_BILL", "Thêm sửa xoá hoá đơn"));
+        
+        /* REPORT */
+        
+        Privilege READ_REPORT =  privilageRepository.save(new Privilege("READ_REPORT", "Xem thống kê"));
+        
+        /* FINE */
+        Privilege UPDATE_FINE =  privilageRepository.save(new Privilege("UPDATE_FINE", "Thay đổi % phạt"));
+        
 
         Role ROLE_ADMIN = roleRepository.save(new Role("ROLE_ADMIN",
                 Arrays.asList(
@@ -71,7 +83,11 @@ public class Application implements CommandLineRunner {
                         	READ_LOBBYCATEGORY,
                         	UPDATE_LOBBYCATEGORY,
                         	READ_SERVICE,
-                        	UPDATE_SERVICE
+                        	UPDATE_SERVICE,
+                        	READ_BILL,
+                        	UPDATE_BILL,
+                        	READ_REPORT,
+                        	UPDATE_FINE
                 )));
         Role ROLE_MANAGER = roleRepository.save(new Role("ROLE_MANAGER",
                 Arrays.asList(                      	
@@ -87,7 +103,11 @@ public class Application implements CommandLineRunner {
                         	READ_LOBBYCATEGORY,
                         	UPDATE_LOBBYCATEGORY,
                         	READ_SERVICE,
-                        	UPDATE_SERVICE
+                        	UPDATE_SERVICE,
+                        	READ_BILL,
+                        	UPDATE_BILL,
+                        	READ_REPORT,
+                        	UPDATE_FINE
                 )));
         Role ROLE_USER = roleRepository.save(new Role("ROLE_USER", Arrays.asList(
         		UPDATE_FEAST,
@@ -99,7 +119,8 @@ public class Application implements CommandLineRunner {
             	READ_LOBBYCATEGORY,
             	UPDATE_LOBBYCATEGORY,
             	READ_SERVICE,
-            	UPDATE_SERVICE
+            	UPDATE_SERVICE,
+            	READ_BILL
                 
         )));
         userRepository.save(new User(
