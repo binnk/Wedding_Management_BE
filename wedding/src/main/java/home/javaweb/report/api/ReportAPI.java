@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ public class ReportAPI {
 	@Autowired
 	private IReportDateService reportDate;
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("/month/{month}")
 	public ResponseEntity<Object> getAllByMonth(@PathVariable("month") int month){
 		List<ReportDate> reports = reportDate.findByMonth(month);
@@ -37,6 +39,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping
 	public ResponseEntity<Object> findAll(){
 		List<ReportDate> reports = reportDate.findAll();
@@ -46,6 +49,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("/date")
 	public ResponseEntity<Object> findAllByDate(@RequestParam String date){
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -57,6 +61,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("/month/{month}/year/{year}")
 	public ResponseEntity<Object> findByMonthAndYear(
 						@PathVariable("month") int month,
@@ -69,6 +74,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("lobby/month/{month}/year/{year}")
 	public ResponseEntity<Object> selectCountLobby(
 						@PathVariable("month") int month,
@@ -81,6 +87,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("service/month/{month}/year/{year}")
 	public ResponseEntity<Object> selectCountService(
 						@PathVariable("month") int month,
@@ -93,6 +100,7 @@ public class ReportAPI {
 		return new ResponseEntity<Object>(reports, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasAuthority('READ_REPORT')") 
 	@GetMapping("food/month/{month}/year/{year}")
 	public ResponseEntity<Object> selectCountFood(
 						@PathVariable("month") int month,
