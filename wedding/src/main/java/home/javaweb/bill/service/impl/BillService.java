@@ -136,4 +136,11 @@ public class BillService implements IBillService {
 		
 	}
 
+
+
+	@Override
+	public Bill findByFeastId(Long feastId) {
+		return _repository.findByFeastId(feastId);
+	}
+
 }

@@ -28,10 +28,13 @@ public class BillAPI {
 	@PreAuthorize("hasAuthority('READ_BILL')") 
 	@GetMapping("/{feast-id}")
 	public ResponseEntity<Object> getBillByFeast(@PathVariable("feast-id") Long feastId){
-		Bill bill = service.getBillByFeast(feastId);
-		if(bill == null) {
+		Bill bill = service.findByFeastId(feastId);
+		if(bill == null) 
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
+			
+		if (bill.getStatus() == 0)
+			bill = service.getBillByFeast(feastId);
+	
 		return new ResponseEntity<Object>(bill, HttpStatus.OK);
 	}
 	
