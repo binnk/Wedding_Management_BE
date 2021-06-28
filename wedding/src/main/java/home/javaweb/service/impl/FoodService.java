@@ -60,10 +60,11 @@ public class FoodService implements IFoodService {
 		// TODO Auto-generated method stub
 		Food food = null;
 		for(Long id : ids) {
-			food = foodRepo.getOne(id);
-			if(food != null) 
-			food.setActive(false);
-			foodRepo.save(food);
+			food = foodRepo.findById(id).get();
+			if(food != null) {
+				food.setActive(false);
+				foodRepo.save(food);				
+			}
 		}
 		
 	}
