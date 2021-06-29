@@ -1,5 +1,4 @@
 package home.javaweb.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		private String name;
 		@Column(name = "mintable")
 		private int mintable;
+		@Column(name = "minpricetable")
+		private float minPriceTable;
 		@JsonIgnore
 		@Column(name = "active")
 		Boolean active;
@@ -57,5 +58,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 		}
 		public void setMintable(int mintable) {
 			this.mintable = mintable;
+		}
+		public float getMinPriceTable() {
+			return minPriceTable;
+		}
+		public void setMinPriceTable(float minPriceTable) {
+			this.minPriceTable = minPriceTable;
 		}
 	}

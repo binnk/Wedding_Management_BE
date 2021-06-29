@@ -43,7 +43,12 @@ public class LobbyCategoryService implements ILobbyCategoryService {
 	@Override
 	public LobbyCategoryEntity update(LobbyCategoryEntity lobby) {
 		// TODO Auto-generated method stub
+		LobbyCategoryEntity Catelobby = lobbyCateSer.findById(lobby.getId()).get();
+		if(lobby.getMintable() > Catelobby.getMintable() || lobby.getMinPriceTable() > Catelobby.getMinPriceTable())
+		lobby.setId(null);
 		lobby.setActive(true);
+		Catelobby.setActive(false);
+		lobbyCateSer.save(Catelobby);
 		return lobbyCateSer.save(lobby);
 	}
 

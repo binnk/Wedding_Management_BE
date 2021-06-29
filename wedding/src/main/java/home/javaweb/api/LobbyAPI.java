@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import home.javaweb.dto.LobbyDTO;
 import home.javaweb.entity.LobbyEntity;
+import home.javaweb.repository.LobbyRepository;
 import home.javaweb.service.ILobbyService;
 
 @CrossOrigin
@@ -26,6 +27,8 @@ import home.javaweb.service.ILobbyService;
 public class LobbyAPI {
    @Autowired
     ILobbyService lobbySer;
+   @Autowired
+    LobbyRepository lobbyRepo;
    @PreAuthorize("hasAuthority('READ_LOBBY')") 
    @GetMapping("/lobby")
 	public List<LobbyEntity> lobbyList() {
@@ -62,5 +65,11 @@ public class LobbyAPI {
 		   return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	   lobbySer.Delete(id);
 	   return new ResponseEntity<>(HttpStatus.OK);
+   }
+   @PreAuthorize("hasAuthority('UPDATE_LOBBY')") 
+   @PutMapping("/lobby/check-exist")
+   public  ResponseEntity<Boolean> checkExist(@RequestBody LobbyDTO lobby) {
+	  return new ResponseEntity<Boolean>(
+	   !lobbyRepo.findByName(lobby.getName()).isEmpty(), HttpStatus.OK);
    }
 }

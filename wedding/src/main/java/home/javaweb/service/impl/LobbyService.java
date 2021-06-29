@@ -78,17 +78,27 @@ public class LobbyService  implements ILobbyService{
 	public LobbyEntity update(LobbyDTO lobby) {
 		LobbyEntity lobbyaction = new LobbyEntity();
 		Optional<LobbyCategoryEntity> lobbycategory = lobbyCateRepo.findById(lobby.getIdLobbyCategory());
+		LobbyEntity lobbyCur = lobbyRepo.findById(lobby.getId()).get();
 		if (lobbycategory == null) return null;
 		try {
+			if(lobbyCur.getMaxTable() <= lobby.getMaxtable() 
+					&& lobbyCur.getMinUnitPriceTable() >= lobby.getMinUnitPriceTable()
+					&&lobbyCur.getLobbyCategory() == lobbycategory.get())
+			{
+				lobbyaction
+				.id(lobby.getId());
+			}
 			lobbyaction
-			.id(lobby.getId())
 			.active(true)
 			.name(lobby.getName())
 			.image(lobby.getImage())
 			.maxtable(lobby.getMaxtable())
 			.minUnitPriceTable(lobby.getMinUnitPriceTable())
 			.lobbyCategory(lobbycategory.get());
+			lobbyCur.setActive(false);
+			lobbyRepo.save(lobbyCur);
 			return lobbyRepo.save(lobbyaction);
+			
 		} catch(Exception e) {
 			return null;
 		}
@@ -100,5 +110,7 @@ public class LobbyService  implements ILobbyService{
 		lobby.active(false);
 		lobbyRepo.save(lobby);
 	}
+	
+	
 
 }

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.javaweb.dto.LobbyDTO;
 import home.javaweb.entity.LobbyCategoryEntity;
+import home.javaweb.repository.LobbyCategoryRepository;
 import home.javaweb.service.impl.LobbyCategoryService;
 
 @CrossOrigin
@@ -25,6 +27,8 @@ import home.javaweb.service.impl.LobbyCategoryService;
 public class LobbyCategoryAPI {
    @Autowired
    LobbyCategoryService lobbyCateSer;
+   @Autowired
+   LobbyCategoryRepository lobbycateRepo;
    @PreAuthorize("hasAuthority('READ_LOBBYCATEGORY')") 
    @GetMapping("/lobbycategory")
    public ResponseEntity<Object> getAll() {
@@ -53,5 +57,11 @@ public class LobbyCategoryAPI {
 	   if(id == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	   lobbyCateSer.Delete(id);
 	   return new ResponseEntity<>( HttpStatus.OK);
+   }
+   @PreAuthorize("hasAuthority('UPDATE_LOBBYCATEGORY')") 
+   @PutMapping("/lobbycategory/check-exist")
+   public  ResponseEntity<Boolean> checkExist(@RequestBody LobbyCategoryEntity lobbycate) {
+	  return new ResponseEntity<Boolean>(
+	   !lobbycateRepo.findByName(lobbycate.getName()).isEmpty(), HttpStatus.OK);
    }
 }
