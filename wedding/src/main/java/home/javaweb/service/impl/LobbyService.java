@@ -37,7 +37,7 @@ public class LobbyService  implements ILobbyService{
 		lobby = lobbyRepo.findById(id).get();
 
 		// TODO Auto-generated method stub
-		if(lobby != null && lobby.getActive() == true)
+		if(lobby != null)
 		{
 			result
 			.id(lobby.getId())
