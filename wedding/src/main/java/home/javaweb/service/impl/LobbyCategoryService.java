@@ -18,7 +18,7 @@ public class LobbyCategoryService implements ILobbyCategoryService {
 	public LobbyCategoryEntity getOne(Long id) {
 		// TODO Auto-generated method stub
 		LobbyCategoryEntity lobbyCate = lobbyCateSer.findById(id).get();
-		if(lobbyCate.getActive() == false) return null;
+		//if(lobbyCate.getActive() == false) return null;
 		return lobbyCate;
 	}
 
