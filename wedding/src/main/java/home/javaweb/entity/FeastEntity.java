@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import home.javaweb.regime.entity.Regime;
+
 
 @Entity
 @Table(name = "feast")
@@ -45,6 +50,9 @@ public class FeastEntity {
 	@ManyToOne
 	@JoinColumn(name = "lobby_id")
 	private  LobbyEntity lobby;
+	
+	private Long regimeRefund;
+	private Long weddingRefund;
 
 	
 	@OneToMany(mappedBy = "feast")
@@ -122,6 +130,20 @@ public class FeastEntity {
 	public void setDateOfOrganization(LocalDate dateOfOrganization) {
 		this.dateOfOrganization = dateOfOrganization;
 	}
+	public Long getRegimeRefund() {
+		return regimeRefund;
+	}
+	public void setRegimeRefund(Long totalRefund) {
+		this.regimeRefund = totalRefund;
+	}
+	public Long getWeddingRefund() {
+		return weddingRefund;
+	}
+	public void setWeddingRefund(Long weddingRefund) {
+		this.weddingRefund = weddingRefund;
+	}
+
+	
 	
 	
 	

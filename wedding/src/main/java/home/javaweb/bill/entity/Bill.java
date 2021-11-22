@@ -170,6 +170,7 @@ public class Bill {
 	public void setNumberOfTables(Integer numberOfTables) {
 		this.numberOfTables = numberOfTables;
 	}
-	
+
+
 	
 }

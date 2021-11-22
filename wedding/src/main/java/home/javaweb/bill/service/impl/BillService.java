@@ -55,13 +55,19 @@ public class BillService implements IBillService {
 			totalTablePrice = 0L;
 		Integer numberTable = calcTotalTables(feastId);
 		
-		Long totalBill = totalServicePrice + totalTablePrice;
+	
 		
 		//Calculate fine by day
 		Fine fine = _fineService.findById(entity.getFine().getId());
 		LocalDate currentDate = LocalDate.now();
 		FeastEntity feast = _feastService.findById(feastId);
 		LocalDate dateOfPayment = feast.getDateOfOrganization();
+		
+		
+		Long regimeRefund = feast.getRegimeRefund();
+		Long weddingRefund = feast.getWeddingRefund();
+		
+		Long totalBill = totalServicePrice + totalTablePrice - regimeRefund - weddingRefund;
 		
 		//Calculate currentDate - dateOfPayment
 		Long overdueDay = ChronoUnit.DAYS.between(dateOfPayment, currentDate);

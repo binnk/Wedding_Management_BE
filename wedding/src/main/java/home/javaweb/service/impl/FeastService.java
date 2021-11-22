@@ -15,6 +15,11 @@ import home.javaweb.converter.FeastConverter;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.entity.LobbyEntity;
+import home.javaweb.regime.dto.FeastRegimeDTO;
+import home.javaweb.regime.entity.FeastRegime;
+import home.javaweb.regime.entity.Regime;
+import home.javaweb.regime.repository.FeastRegimeRepository;
+import home.javaweb.regime.service.RegimeService;
 import home.javaweb.repository.FeastRepository;
 import home.javaweb.repository.LobbyRepository;
 import home.javaweb.repository.ShiftRepository;
@@ -36,6 +41,10 @@ public class FeastService implements IFeastService {
 	private IFeastServiceService feastSService;
 	@Autowired
 	private IFeastTableService feastTableService;
+	@Autowired
+	private FeastRegimeRepository feastRegimeRepo;
+	@Autowired
+	private RegimeService regimeService;
 
 	@Override
 	public List<FeastDTO> findAll() {
@@ -143,4 +152,6 @@ public class FeastService implements IFeastService {
 		}
 		return false;
 	}
+
+
 }
