@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
+import home.javaweb.regime.entity.FeastRegime;
+import home.javaweb.regime.entity.Regime;
 import home.javaweb.repository.FeastRepository;
 import home.javaweb.repository.LobbyRepository;
 import home.javaweb.repository.ShiftRepository;
@@ -40,6 +42,8 @@ public class FeastAPI {
   private ShiftRepository shiftRepo;
   @Autowired
   private FeastRepository feastRepo;
+  
+  
   //some thing change
   @PreAuthorize("hasAuthority('READ_FEAST')") 
    @GetMapping(path = "/feast")
@@ -78,5 +82,6 @@ public class FeastAPI {
     public Boolean isExist(@RequestBody FeastDTO feast) {
             return feastser.checkExist(feast);
     }
+    
 
 }

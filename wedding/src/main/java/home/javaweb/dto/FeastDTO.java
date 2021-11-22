@@ -16,6 +16,10 @@ public class FeastDTO {
 	private String note;
 	private String groomName;
 	private String dateOfOrganization;
+	private Long regimeRefund;
+	private Long weddingRefund;
+
+	
 	public String getNameShift() {
 		return nameShift;
 	}
@@ -93,6 +97,20 @@ public class FeastDTO {
 	}
 	public void setDeposit(Float deposit) {
 		this.deposit = deposit;
+	}
+	
+
+	public Long getRegimeRefund() {
+		return regimeRefund;
+	}
+	public void setRegimeRefund(Long regimeRefund) {
+		this.regimeRefund = regimeRefund;
+	}
+	public Long getWeddingRefund() {
+		return weddingRefund;
+	}
+	public void setWeddingRefund(Long weddingRefund) {
+		this.weddingRefund = weddingRefund;
 	}
 	public boolean IsAnyNullOrEmty() {
 		
