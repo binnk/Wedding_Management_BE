@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,8 @@ public class DepositConfigAPI {
 	}
 	
 	@PutMapping
-	public ResponseEntity<Object> changeDepositConfig(DepositConfig deposit) {
+	public ResponseEntity<Object> changeDepositConfig(@RequestBody DepositConfig deposit) {
+		deposit.setId(1L);
 		DepositConfig newDeposit = repository.save(deposit)	;
 		return new ResponseEntity<>(deposit,HttpStatus.OK);
 	}
