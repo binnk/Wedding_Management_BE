@@ -30,9 +30,8 @@ public class DepositConfigAPI {
 	
 	@PutMapping
 	public ResponseEntity<Object> changeDepositConfig(DepositConfig deposit) {
-		deposit.setId(1L);
 		DepositConfig newDeposit = repository.save(deposit)	;
-		return new ResponseEntity<>(newDeposit,HttpStatus.OK);
+		return new ResponseEntity<>(deposit,HttpStatus.OK);
 	}
 	
 	
