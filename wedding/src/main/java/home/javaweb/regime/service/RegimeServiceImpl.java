@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import home.javaweb.regime.dto.RegimeDTO;
+import home.javaweb.regime.entity.PromotionService;
 import home.javaweb.regime.entity.Regime;
+import home.javaweb.regime.repository.PromotionServiceRepository;
 import home.javaweb.regime.repository.RegimeRepository;
 
 @Service
@@ -15,6 +17,8 @@ public class RegimeServiceImpl implements RegimeService {
 	@Autowired
 	private RegimeRepository regimeRepository;
 	
+	@Autowired
+	private PromotionServiceRepository promotionRepository;
 
 	@Override
 	public List<Regime> findAll() {
@@ -31,25 +35,14 @@ public class RegimeServiceImpl implements RegimeService {
 		Regime regime = new Regime();
 		
 		if(dto.getId() != null) {
-			regime = regimeRepository.findById(dto.getId()).get();	
+			regime.setId(dto.getId());		
 		}
 		
-		if(dto.getDescription() !=null) {
-			regime.setDescription(dto.getDescription());		
-		}
+		regime.setPercentage(dto.getPercentage());
+		regime.setDescription(dto.getDescription());
 		
-		if(dto.getPercentage() != 0) {
-			regime.setPercentage(dto.getPercentage());	
-		}
-		
-		if(dto.getRefund() != null) {
-			regime.setRefund(dto.getRefund());	
-		}
-		
-		if(dto.getSpecialDate() != null) {
-			regime.setSpecialDate(dto.getSpecialDate());	
-		}
-
+		PromotionService promotion = promotionRepository.findById(dto.getPromotionServiceId()).get();
+		regime.setPromotionService(promotion);
 		
 		return regimeRepository.save(regime);
 	}

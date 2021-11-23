@@ -3,8 +3,8 @@ package home.javaweb.regime.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import home.javaweb.regime.entity.PromotionService;
-import home.javaweb.regime.entity.Regime;
+import home.javaweb.report.entity.ReportDate;
 
-public interface RegimeRepository  extends JpaRepository<Regime, Long>{
-
+public interface PromotionServiceRepository extends JpaRepository<PromotionService, Long>  {
+	
 }

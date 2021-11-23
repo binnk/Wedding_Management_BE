@@ -6,10 +6,8 @@ public class RegimeDTO {
 	private int percentage;
 	
 	private String description;
-	
-	private String specialDate;
 
-	private Long refund;
+	private Long promotionServiceId;
 
 	public Long getId() {
 		return id;
@@ -35,23 +33,14 @@ public class RegimeDTO {
 		this.description = description;
 	}
 
-	public String getSpecialDate() {
-		return specialDate;
+	public Long getPromotionServiceId() {
+		return promotionServiceId;
 	}
 
-	public void setSpecialDate(String specialDate) {
-		this.specialDate = specialDate;
+	public void setPromotionServiceId(Long promotionServiceId) {
+		this.promotionServiceId = promotionServiceId;
 	}
-
-	public Long getRefund() {
-		return refund;
-	}
-
-	public void setRefund(Long refund) {
-		this.refund = refund;
-	}
-
-
+	
 	
 	
 }

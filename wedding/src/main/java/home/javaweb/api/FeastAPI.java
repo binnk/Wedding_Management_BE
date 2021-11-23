@@ -83,12 +83,5 @@ public class FeastAPI {
             return feastser.checkExist(feast);
     }
     
-    @GetMapping(path = "/feast/{id}")
- 	public ResponseEntity<Object> findById(@PathVariable("id") Long id) {
-
-    	FeastEntity feast = feastRepo.findById(id).get();
-    	return new ResponseEntity<>(feast, HttpStatus.OK);
- 	}
-    
 
 }
