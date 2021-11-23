@@ -30,10 +30,10 @@ public class Regime {
 	private int percentage;
 	
 	private String description;
+	
+	private String specialDate;
 
-	@ManyToOne
-	@JoinColumn(name = "promotion_service_id")
-	private PromotionService promotionService;
+	private Long refund;
 	
 	public Long getId() {
 		return id;
@@ -59,14 +59,23 @@ public class Regime {
 		this.description = description;
 	}
 
-	public PromotionService getPromotionService() {
-		return promotionService;
+	public String getSpecialDate() {
+		return specialDate;
 	}
 
-	public void setPromotionService(PromotionService promotionService) {
-		this.promotionService = promotionService;
+	public void setSpecialDate(String specialDate) {
+		this.specialDate = specialDate;
 	}
-	
+
+	public Long getRefund() {
+		return refund;
+	}
+
+	public void setRefund(Long refund) {
+		this.refund = refund;
+	}
+
+
 	
 	
 	
