@@ -67,6 +67,12 @@ public class BillService implements IBillService {
 		Long regimeRefund = feast.getRegimeRefund();
 		Long weddingRefund = feast.getWeddingRefund();
 		
+		if(regimeRefund == null)
+			regimeRefund = 0L;
+		
+		if(weddingRefund == null)
+			weddingRefund = 0L;
+		
 		Long totalBill = totalServicePrice + totalTablePrice - regimeRefund - weddingRefund;
 		
 		//Calculate currentDate - dateOfPayment
