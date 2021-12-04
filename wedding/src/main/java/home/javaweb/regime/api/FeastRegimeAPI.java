@@ -46,9 +46,9 @@ public class FeastRegimeAPI {
  	}
     
     @PostMapping("/feast/regime")
-  	public ResponseEntity<Object> addRegime(@RequestBody FeastRegimeDTO dto) {
+  	public ResponseEntity<Object> handleRegime(@RequestBody FeastRegimeDTO dto) {
      	
-    	service.addRegime(dto);
+    	service.handleRegime(dto);
  		return new ResponseEntity<>(HttpStatus.OK); 
   	
   	}

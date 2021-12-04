@@ -7,6 +7,7 @@ import home.javaweb.regime.entity.FeastRegime;
 import home.javaweb.regime.entity.Regime;
 
 public interface FeastRegimeService {
-	void addRegime(FeastRegimeDTO dto);
+	void handleRegime(FeastRegimeDTO dto);
 	List<FeastRegime> getRegimesByFeast(Long feastId);
+	
 }

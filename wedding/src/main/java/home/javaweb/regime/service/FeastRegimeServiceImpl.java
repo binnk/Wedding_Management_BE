@@ -29,7 +29,7 @@ public class FeastRegimeServiceImpl implements FeastRegimeService {
 	private RegimeService regimeService;
 
 	@Override
-	public void addRegime(FeastRegimeDTO dto) {
+	public void handleRegime(FeastRegimeDTO dto) {
 		FeastRegime feastRegime = new FeastRegime();
 		ArrayList<Long> oldRegimeId = dto.getOldRegimeId();
 		
