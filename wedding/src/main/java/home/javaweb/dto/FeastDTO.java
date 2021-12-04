@@ -18,6 +18,7 @@ public class FeastDTO {
 	private String dateOfOrganization;
 	private Long regimeRefund;
 	private Long weddingRefund;
+	private String reasonRefund;
 
 	
 	public String getNameShift() {
@@ -100,6 +101,12 @@ public class FeastDTO {
 	}
 	
 
+	public String getReasonRefund() {
+		return reasonRefund;
+	}
+	public void setReasonRefund(String reasonRefund) {
+		this.reasonRefund = reasonRefund;
+	}
 	public Long getRegimeRefund() {
 		return regimeRefund;
 	}

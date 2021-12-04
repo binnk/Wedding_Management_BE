@@ -53,6 +53,7 @@ public class FeastEntity {
 	
 	private Long regimeRefund;
 	private Long weddingRefund;
+	private String reasonRefund;
 
 	
 	@OneToMany(mappedBy = "feast")
@@ -141,6 +142,12 @@ public class FeastEntity {
 	}
 	public void setWeddingRefund(Long weddingRefund) {
 		this.weddingRefund = weddingRefund;
+	}
+	public String getReasonRefund() {
+		return reasonRefund;
+	}
+	public void setReasonRefund(String reasonRefund) {
+		this.reasonRefund = reasonRefund;
 	}
 
 	

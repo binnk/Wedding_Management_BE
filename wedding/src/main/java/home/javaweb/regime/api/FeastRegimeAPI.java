@@ -53,10 +53,6 @@ public class FeastRegimeAPI {
   	
   	}
     
-    @DeleteMapping("/feast/regime")
- 	public ResponseEntity<Object> removeRegime(@RequestBody FeastRegimeDTO dto) {
- 		service.removeRegime(dto);
- 		return new ResponseEntity<>(HttpStatus.OK); 
- 	}
+
 
 }

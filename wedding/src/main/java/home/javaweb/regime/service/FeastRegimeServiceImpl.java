@@ -1,5 +1,6 @@
 package home.javaweb.regime.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +31,37 @@ public class FeastRegimeServiceImpl implements FeastRegimeService {
 	@Override
 	public void addRegime(FeastRegimeDTO dto) {
 		FeastRegime feastRegime = new FeastRegime();
+		ArrayList<Long> oldRegimeId = dto.getOldRegimeId();
 		
-		FeastEntity feast = feastRepository.findById(dto.getFeastId()).get();
-		Regime regime = regimeService.findById(dto.getRegimeId());
 		
-		feastRegime.setRegime(regime);
-		feastRegime.setFeast(feast);
+		for(Long newId : dto.getNewRegimeId()) {
+			boolean flag = false;
+			for(Long oldId : dto.getOldRegimeId()) {
+				if(oldId == newId) {
+					flag = true;
+					oldRegimeId.remove(oldId);
+					break;
+				}
+			}
+			if (flag == false) {			
+				FeastRegimeId feastRegimeId = new FeastRegimeId(dto.getFeastId(), newId);
+				feastRegime.setId(feastRegimeId);
+				feastRegimeRepo.save(feastRegime);
+			} 
+				
+	
+		}
+		
+		for(Long idDeleted : oldRegimeId) {
+			removeRegime(dto.getFeastId(), idDeleted);
+		}
+
+
 	}
 
-	@Override
-	public void removeRegime(FeastRegimeDTO dto) {		
-		FeastRegimeId id = new FeastRegimeId(dto.getFeastId(), dto.getRegimeId());	
+
+	public void removeRegime(Long feastId, Long regimeId) {		
+		FeastRegimeId id = new FeastRegimeId(feastId, regimeId);
 		feastRegimeRepo.deleteById(id);
 	}
 
