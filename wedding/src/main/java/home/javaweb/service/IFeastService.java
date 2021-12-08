@@ -2,6 +2,7 @@ package home.javaweb.service;
 
 import java.util.List;
 
+import home.javaweb.dto.ExistedFeastDTO;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.regime.dto.FeastRegimeDTO;
@@ -15,6 +16,6 @@ public interface IFeastService {
      FeastEntity findById(Long id);
      void delete(Long id);
 	void deleteById(Long id);
-	Boolean checkExist(FeastDTO feast);
+	Boolean checkExist(ExistedFeastDTO feast);
 
 }

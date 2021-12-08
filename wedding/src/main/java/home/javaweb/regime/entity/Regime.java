@@ -31,6 +31,8 @@ public class Regime {
 	
 	private String description;
 	
+	private String minTotalBill;
+	
 	private String specialDate;
 
 	private Long refund;
@@ -73,6 +75,14 @@ public class Regime {
 
 	public void setRefund(Long refund) {
 		this.refund = refund;
+	}
+
+	public String getMinTotalBill() {
+		return minTotalBill;
+	}
+
+	public void setMinTotalBill(String minTotalBill) {
+		this.minTotalBill = minTotalBill;
 	}
 
 

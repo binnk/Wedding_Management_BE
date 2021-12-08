@@ -12,6 +12,7 @@ import home.javaweb.bill.entity.Bill;
 import home.javaweb.bill.entity.Fine;
 import home.javaweb.bill.service.IBillService;
 import home.javaweb.converter.FeastConverter;
+import home.javaweb.dto.ExistedFeastDTO;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.entity.LobbyEntity;
@@ -137,19 +138,13 @@ public class FeastService implements IFeastService {
 	}
 
 	@Override
-	public Boolean checkExist(FeastDTO feast) {
+	public Boolean checkExist(ExistedFeastDTO feast) {	
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    	LocalDate dateOgnz = LocalDate.parse(feast.getDateOfOrganization(), dtf);
+		int count = feastRepo.countByShift_IdAndLobby_IdAndDateOfOrganization(feast.getShiftId(), feast.getLobbyId(), dateOgnz);
 		
-		FeastEntity entity = null;
-		try {
-			
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-		    	LocalDate dateOgnz = LocalDate.parse(feast.getDateOfOrganization(), dtf);
-				entity  = feastRepo.findByShift_IdAndLobby_IdAndDateOfOrganization(feast.getIdShift(), feast.getLobbyId(), dateOgnz);
-				if(entity != null) return true;
-			
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
+		if (count >=1) return true;
+		
 		return false;
 	}
 

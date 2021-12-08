@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import home.javaweb.dto.ExistedFeastDTO;
 import home.javaweb.dto.FeastDTO;
 import home.javaweb.entity.FeastEntity;
 import home.javaweb.regime.entity.FeastRegime;
@@ -78,8 +80,8 @@ public class FeastAPI {
 		 feastser.deleteById(id);
 	}
     @PreAuthorize("hasAuthority('UPDATE_FEAST')") 
-    @PutMapping("/feast/check-exist")
-    public Boolean isExist(@RequestBody FeastDTO feast) {
+    @GetMapping("/feast/check-exist")
+    public Boolean isExist(@RequestBody ExistedFeastDTO feast) {
             return feastser.checkExist(feast);
     }
     

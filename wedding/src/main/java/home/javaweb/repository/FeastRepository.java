@@ -13,6 +13,6 @@ import home.javaweb.entity.ShiftEntity;
 
 public interface FeastRepository extends JpaRepository<FeastEntity, Long> {
 	
-	FeastEntity findByShift_IdAndLobby_IdAndDateOfOrganization (Long id_shift, Long id_lobby, LocalDate date);
+	int countByShift_IdAndLobby_IdAndDateOfOrganization (Long shiftId, Long lobbyId, LocalDate dateOfOrganization);
          
 }

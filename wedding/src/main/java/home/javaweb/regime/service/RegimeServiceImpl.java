@@ -49,6 +49,10 @@ public class RegimeServiceImpl implements RegimeService {
 		if(dto.getSpecialDate() != null) {
 			regime.setSpecialDate(dto.getSpecialDate());	
 		}
+		
+		if(dto.getMinTotalBill() != null) {
+			regime.setMinTotalBill(dto.getMinTotalBill());	
+		}
 
 		
 		return regimeRepository.save(regime);

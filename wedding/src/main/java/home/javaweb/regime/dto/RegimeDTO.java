@@ -10,6 +10,8 @@ public class RegimeDTO {
 	private String specialDate;
 
 	private Long refund;
+	
+	private String minTotalBill;
 
 	public Long getId() {
 		return id;
@@ -49,6 +51,14 @@ public class RegimeDTO {
 
 	public void setRefund(Long refund) {
 		this.refund = refund;
+	}
+
+	public String getMinTotalBill() {
+		return minTotalBill;
+	}
+
+	public void setMinTotalBill(String minTotalBill) {
+		this.minTotalBill = minTotalBill;
 	}
 
 
