@@ -80,7 +80,7 @@ public class FeastAPI {
 		 feastser.deleteById(id);
 	}
     @PreAuthorize("hasAuthority('UPDATE_FEAST')") 
-    @GetMapping("/feast/check-exist")
+    @PutMapping("/feast/check-exist")
     public Boolean isExist(@RequestBody ExistedFeastDTO feast) {
             return feastser.checkExist(feast);
     }
