@@ -70,6 +70,13 @@ public class FeastRegimeServiceImpl implements FeastRegimeService {
 		List<FeastRegime> regimes = feastRegimeRepo.findRegimeByFeastId(feastId);
 		return regimes;
 	}
+
+
+	@Override
+	public void deleteByFeast(Long feastId) {
+		feastRegimeRepo.deleteByFeast(feastId);
+		
+	}
 	
 	
 

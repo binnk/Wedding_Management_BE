@@ -20,6 +20,7 @@ import home.javaweb.regime.dto.FeastRegimeDTO;
 import home.javaweb.regime.entity.FeastRegime;
 import home.javaweb.regime.entity.Regime;
 import home.javaweb.regime.repository.FeastRegimeRepository;
+import home.javaweb.regime.service.FeastRegimeService;
 import home.javaweb.regime.service.RegimeService;
 import home.javaweb.repository.FeastRepository;
 import home.javaweb.repository.LobbyRepository;
@@ -46,6 +47,8 @@ public class FeastService implements IFeastService {
 	private FeastRegimeRepository feastRegimeRepo;
 	@Autowired
 	private RegimeService regimeService;
+	@Autowired
+	private FeastRegimeService feastRegimeService;
 
 	@Override
 	public List<FeastDTO> findAll() {
@@ -116,7 +119,7 @@ public class FeastService implements IFeastService {
 	//	 delete feast_id in feast_service
 		feastSService.deleteByFeast(id);
 		feastTableService.deleteByFeast(id);
-		
+		feastRegimeService.deleteByFeast(id);
 		feastRepo.deleteById(id);
 	}
 
@@ -131,7 +134,9 @@ public class FeastService implements IFeastService {
 		// delete all table has feast
 		feastSService.deleteByFeast(id);
 		feastTableService.deleteByFeast(id);
+		feastRegimeService.deleteByFeast(id);
 		billService.deleteByFeast(id);
+		
 		
 		feastRepo.deleteById(id);
 		
