@@ -3,6 +3,7 @@ package home.javaweb.regime.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import home.javaweb.regime.dto.RegimeDTO;
@@ -18,7 +19,7 @@ public class RegimeServiceImpl implements RegimeService {
 
 	@Override
 	public List<Regime> findAll() {
-		return regimeRepository.findAll();
+		return regimeRepository.findByActive(true);
 	}
 
 	@Override
@@ -53,14 +54,18 @@ public class RegimeServiceImpl implements RegimeService {
 		if(dto.getMinTotalBill() != null) {
 			regime.setMinTotalBill(dto.getMinTotalBill());	
 		}
-
+		
+		regime.setActive(true);
 		
 		return regimeRepository.save(regime);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		regimeRepository.deleteById(id);		
+		Regime regime = regimeRepository.findById(id).get();
+		regime.setActive(false);
+		
+		regimeRepository.save(regime);
 	}
 
 }

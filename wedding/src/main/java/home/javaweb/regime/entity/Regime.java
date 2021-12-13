@@ -1,24 +1,10 @@
 package home.javaweb.regime.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import home.javaweb.entity.FeastEntity;
-import home.javaweb.entity.FeastService;
-import home.javaweb.entity.FoodCategory;
 
 @Entity
 @Table(name = "regime")
@@ -36,6 +22,8 @@ public class Regime {
 	private String specialDate;
 
 	private Long refund;
+	
+	private Boolean active;
 	
 	public Long getId() {
 		return id;
@@ -84,6 +72,15 @@ public class Regime {
 	public void setMinTotalBill(String minTotalBill) {
 		this.minTotalBill = minTotalBill;
 	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
 
 
 	
